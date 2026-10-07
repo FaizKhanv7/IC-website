@@ -1,5 +1,5 @@
 import csimg from "../assets/cs.jpg";
-import { ArrowRight, Code2, Cpu, Settings2, Terminal } from "lucide-react";
+import { ArrowRight, Code2, Cpu, Gamepad2, Terminal } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const courseList = [
@@ -34,14 +34,14 @@ const courseList = [
     topics: ["Java OOP", "Data Structures", "Algorithms & Search"]
   },
   {
-    code: "Mechatronics",
+    code: "PGAS",
     badge: "Senior Capstone",
-    title: "Mechatronics",
-    desc: "Design and build integrated mechanical and electronic systems using sensors, actuators, microcontrollers, and embedded software.",
+    title: "Programming, Games, Apps, and Society",
+    desc: "Explore software development, game design, and application creation while analyzing technology's impact on modern society.",
     image: csimg,
-    href: "/courses/mechatronics",
-    icon: Settings2,
-    topics: ["Robotics & CAD", "Sensors & Actuators", "Microcontrollers", "Capstone Project"]
+    href: "/courses/pgas",
+    icon: Gamepad2,
+    topics: ["Game Development", "Mobile & Web Apps", "Tech & Society", "Capstone Project"]
   }
 ];
 

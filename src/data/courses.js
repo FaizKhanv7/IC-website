@@ -4,7 +4,7 @@
  * NOTE: every number below is a PLACEHOLDER. Replace `stats` with the real
  * figures from the department before this goes live.
  *
- * IST and Mechatronics are not AP courses, so they report a course-level
+ * IST and PGAS are not AP courses, so they report a course-level
  * stat instead of an AP score.
  */
 
@@ -76,19 +76,19 @@ export const courses = [
     },
   },
   {
-    slug: "mechatronics",
-    path: "/courses/mechatronics",
-    code: "MECH",
-    title: "Mechatronics",
-    tagline: "Design and build intelligent systems that combine mechanics, electronics, and software.",
+    slug: "pgas",
+    path: "/courses/pgas",
+    code: "PGAS",
+    title: "Programming, Games, Apps, and Society",
+    tagline: "Build software, games, and apps while exploring technology's impact on society.",
     isAP: false,
     description:
-      "Mechatronics is the pathway's senior capstone, bringing together mechanical design, electronics, and programming. Students use microcontrollers, sensors, and actuators to design, build, and test interactive systems and robots.",
+      "PGAS is the pathway's senior capstone, where students explore the intersection of software development, game design, and application creation. Students build projects while examining how technology shapes modern society and the communities around them.",
     topics: [
-      "Mechanical design and CAD",
-      "Circuits, sensors, and actuators",
-      "Microcontrollers and embedded programming",
-      "Robotics and integrated capstone project",
+      "Game development",
+      "Mobile and web application development",
+      "Technology and society",
+      "Capstone project",
     ],
     stats: {
       primaryLabel: "Course Average",

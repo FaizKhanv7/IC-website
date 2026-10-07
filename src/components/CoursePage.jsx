@@ -81,8 +81,8 @@ function CoursePage({ slug }) {
         <div className="cta-copy-side">
           <h3>See What Forsyth Central Students Build in {course.code}</h3>
           <p>
-            Browse student-built robots and integrated mechanical, electronic, and
-            software systems from this course in our interactive project carousel.
+            Browse student-built games, apps, and other software projects from this
+            course in our interactive project carousel.
           </p>
           <Link to="/projects" className="btn btn-primary btn-sm">
             View Projects Carousel <ArrowRight size={14} />

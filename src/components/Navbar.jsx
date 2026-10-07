@@ -80,8 +80,8 @@ function Navbar() {
                 <Link to="/courses/apcsa" className="dropdown-menu-item" onClick={closeAll}>
                   <span className="menu-code">AP CSA</span> AP Computer Science A (Java)
                 </Link>
-                <Link to="/courses/mechatronics" className="dropdown-menu-item" onClick={closeAll}>
-                  <span className="menu-code">MECH</span> Mechatronics
+                <Link to="/courses/pgas" className="dropdown-menu-item" onClick={closeAll}>
+                  <span className="menu-code">PGAS</span> Programming, Games, Apps, and Society
                 </Link>
               </div>
             </div>

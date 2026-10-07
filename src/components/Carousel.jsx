@@ -26,10 +26,10 @@ const slideData = [
   },
   {
     image: img3,
-    tag: "Robotics, Electronics & Design",
-    title: "Build Intelligent Machines",
+    tag: "Programming, Games, Apps & Society",
+    title: "Build Software That Matters",
     subtitle:
-      "In Mechatronics, students combine mechanical design, electronics, sensors, and embedded software to build interactive systems.",
+      "In PGAS, students create games and applications while exploring the impact of technology on modern society.",
     primaryCta: { label: "View Capstone Projects", to: "/projects" },
     secondaryCta: { label: "Student Login", to: "/login" }
   }

@@ -10,8 +10,8 @@ function Courses() {
         <h1 className="page-title">Computer Science Course Catalog</h1>
         <p className="page-lead">
           Four sequential courses engineered to take Forsyth Central students from digital
-          literacy to College Board AP credit and a hands-on senior capstone in
-          mechatronics.
+          literacy to College Board AP credit and a senior capstone in programming,
+          games, apps, and society.
         </p>
       </div>
 
@@ -58,7 +58,7 @@ function Courses() {
             <h3>Want to see what students build in these classes?</h3>
             <p>
               Check out our featured student projects carousel featuring games, web apps,
-              and robotics projects created by Bulldogs.
+              and cloud services created by Bulldogs.
             </p>
           </div>
           <Link to="/projects" className="btn btn-primary">

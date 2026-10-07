@@ -16,7 +16,8 @@ function About() {
         <h1 className="page-title">About the Computer Science Pathway</h1>
         <p className="page-lead">
           A four-course sequence in the FCHS STEM Academy designed to take students from
-          their first line of code to designing and building integrated robotic systems.
+          their first line of code to creating games and apps and exploring technology's
+          impact on society.
         </p>
       </div>
 
@@ -29,12 +30,12 @@ function About() {
               <strong> Forsyth Central Highschool</strong> in <strong>Forsyth County</strong>.
               Students begin in 9th grade with Information Science &amp; Technology (IST),
               move through two College Board Advanced Placement courses (AP CSP and AP CSA),
-              and finish with a hands-on Mechatronics capstone.
+              and finish with a capstone in Programming, Games, Apps, and Society (PGAS).
             </p>
             <p className="page-text">
               Each course builds progressively on the last. Rather than leaving high school
               with only textbook notes, our Bulldogs graduate with an authentic portfolio of
-              published web apps, algorithmic Java software, and working robotic prototypes.
+              published web apps, algorithmic Java software, and cloud-hosted microservices.
             </p>
 
             <div className="about-highlights-grid">
@@ -55,8 +56,8 @@ function About() {
               <div className="about-highlight-box">
                 <CheckCircle2 className="highlight-icon" size={20} />
                 <div>
-                  <strong>Hands-On Mechatronics Capstone</strong>
-                  <p>Students combine mechanical design, electronics, and programming to build real systems.</p>
+                  <strong>Creative Technology Capstone</strong>
+                  <p>Students create games and apps while considering technology's impact on society.</p>
                 </div>
               </div>
               <div className="about-highlight-box">
@@ -147,12 +148,12 @@ function About() {
 
           <div className="about-pillar-box">
             <span className="pillar-step">Year 4</span>
-            <h4>Mechatronics</h4>
+            <h4>Programming, Games, Apps, and Society</h4>
             <p>
-              Robotics, mechanical design, electronics, sensors, microcontrollers, and an
-              integrated student-designed capstone.
+              Game development, mobile and web apps, technology's impact on society, and a
+              student-designed capstone project.
             </p>
-            <Link to="/courses/mechatronics" className="link-arrow">Course details &rarr;</Link>
+            <Link to="/courses/pgas" className="link-arrow">Course details &rarr;</Link>
           </div>
         </div>
       </section>

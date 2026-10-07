@@ -36,7 +36,7 @@ const filterTabs = [
   { label: "IST", value: "IST" },
   { label: "AP CSP", value: "AP CSP" },
   { label: "AP CSA", value: "AP CSA" },
-  { label: "Mechatronics", value: "Mechatronics" }
+  { label: "PGAS", value: "PGAS" }
 ];
 
 export default function ProjectCarousel() {

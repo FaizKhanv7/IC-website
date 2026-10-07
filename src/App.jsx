@@ -7,7 +7,7 @@ import Courses from "./pages/Courses"
 import IST from "./pages/IST"
 import APCSP from "./pages/APCSP"
 import APCSA from "./pages/APCSA"
-import Mechatronics from "./pages/Mechatronics"
+import PGAS from "./pages/PGAS"
 import Projects from "./pages/Projects"
 import Login from "./pages/Login"
 import NotFound from "./pages/NotFound"
@@ -23,9 +23,8 @@ function App() {
         <Route path="/courses/ist" element={<IST />} />
         <Route path="/courses/apcsp" element={<APCSP />} />
         <Route path="/courses/apcsa" element={<APCSA />} />
-        <Route path="/courses/mechatronics" element={<Mechatronics />} />
-        <Route path="/courses/pgas" element={<Navigate to="/courses/mechatronics" replace />} />
-        <Route path="/courses/cloud-computing" element={<Navigate to="/courses/mechatronics" replace />} />
+        <Route path="/courses/pgas" element={<PGAS />} />
+        <Route path="/courses/cloud-computing" element={<Navigate to="/courses/pgas" replace />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />

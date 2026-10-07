@@ -30,7 +30,7 @@ function Home() {
             Located in Forsyth County, Georgia, the FCHS Computer Science &amp; STEM
             Academy runs a rigorous four-course career pathway. We take students from
             their very first line of code through College Board AP coursework and into
-            a senior capstone in mechatronics and robotics. No prior experience required — just curiosity
+            a senior capstone in programming, games, apps, and society. No prior experience required — just curiosity
             and drive.
           </p>
 
@@ -49,7 +49,7 @@ function Home() {
               <span className="stat-sub">Hands-On Project Based</span>
             </div>
             <div className="pathway-stat-item">
-              <span className="stat-big">Robotics</span>
+              <span className="stat-big">PGAS</span>
               <span className="stat-sub">Senior Capstone</span>
             </div>
           </div>
@@ -67,8 +67,8 @@ function Home() {
             <h2 className="banner-heading">Explore Real Student Projects</h2>
             <p className="banner-subtext">
               Every course ends with an authentic, student-built application. From
-              interactive campus guides and environmental data trackers to autonomous
-              robots and sensor-driven systems — check out our interactive showcase.
+              interactive campus guides and environmental data trackers to games and
+              community-focused applications — check out our interactive showcase.
             </p>
             <div className="banner-actions">
               <Link to="/projects" className="btn btn-primary">
@@ -141,10 +141,10 @@ function Home() {
               <div className="pillar-icon-wrap">
                 <Gamepad2 size={24} />
               </div>
-              <h3 className="pillar-title">Mechatronics Capstone</h3>
+              <h3 className="pillar-title">PGAS Capstone</h3>
               <p className="pillar-text">
-                Students combine mechanical design, electronics, and embedded programming
-                to build robots and intelligent systems.
+                Students create games and apps while exploring how technology affects
+                individuals and society.
               </p>
             </div>
           </div>
