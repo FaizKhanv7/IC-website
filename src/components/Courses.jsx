@@ -1,5 +1,5 @@
 import csimg from "../assets/cs.jpg";
-import { ArrowRight, Code2, Cpu, Cloud, Terminal } from "lucide-react";
+import { ArrowRight, Code2, Cpu, Gamepad2, Terminal } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const courseList = [
@@ -34,14 +34,14 @@ const courseList = [
     topics: ["Java OOP", "Data Structures", "Algorithms & Search"]
   },
   {
-    code: "CLOUD",
+    code: "PGAS",
     badge: "Senior Capstone",
-    title: "Cloud Computing",
-    desc: "Move from writing code to shipping it. Provision real cloud infrastructure on AWS, containerize apps with Docker, and configure CI/CD.",
+    title: "Programming, Games, Apps, and Society",
+    desc: "Explore software development, game design, and application creation while analyzing technology's impact on modern society.",
     image: csimg,
-    href: "/courses/cloud-computing",
-    icon: Cloud,
-    topics: ["AWS Architecture", "Docker Containers", "CI/CD Pipelines"]
+    href: "/courses/pgas",
+    icon: Gamepad2,
+    topics: ["Game Development", "Mobile & Web Apps", "Tech & Society", "Capstone Project"]
   }
 ];
 

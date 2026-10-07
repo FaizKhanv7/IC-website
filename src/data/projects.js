@@ -1,6 +1,6 @@
 /*
  * Showcase of student projects from Forsyth Central Highschool CS Pathway.
- * Covering IST, AP CSP, AP CSA, and Cloud Computing.
+ * Covering IST, AP CSP, AP CSA, and PGAS.
  */
 
 export const projects = [
@@ -80,29 +80,29 @@ export const projects = [
     studentTeam: "Marcus Vance & David Zhang (Class of '26)"
   },
   {
-    id: "centralcloud-portal",
-    title: "CentralCloud: School Resource Hub",
-    course: "Cloud",
-    courseFull: "Cloud Computing",
+    id: "bulldog-autonomous-rover",
+    title: "Bulldog Autonomous Rover",
+    course: "PGAS",
+    courseFull: "Programming, Games, Apps, and Society",
     gradeLevel: "12th Grade Capstone",
     year: "2024",
-    tagline: "Serverless full-stack cloud application deployed with automated CI/CD.",
-    description: "The capstone project for the Cloud Computing pathway. CentralCloud is a serverless application built on AWS architecture designed for school club managers to distribute resource files, manage event RSVP lists, and trigger automated notification workflows.",
-    tags: ["AWS Lambda", "API Gateway", "DynamoDB", "Docker", "React", "GitHub Actions"],
+    tagline: "Sensor-guided rover built for autonomous obstacle detection and navigation.",
+    description: "A student-built mechatronics project, the Bulldog Autonomous Rover combines a custom chassis, microcontroller, distance sensors, and motor drivers to navigate a course and avoid obstacles without remote control.",
+    tags: ["Arduino", "C++", "Ultrasonic Sensors", "Motor Control", "CAD", "Robotics"],
     gradient: "linear-gradient(135deg, #991b1b 0%, #ef4444 100%)",
-    iconName: "Cloud",
+    iconName: "Bot",
     featured: true,
     stats: {
-      metric: "99.9% Uptime",
-      highlight: "AWS Certified Cloud Practitioner Aligned"
+      metric: "Autonomous Navigation",
+      highlight: "Sensor-Guided Obstacle Avoidance"
     },
     features: [
-      "Serverless REST microservices deployed via AWS Lambda and API Gateway",
-      "DynamoDB NoSQL single-table schema design for sub-millisecond queries",
-      "Automated CI/CD pipeline building Docker containers on GitHub Actions",
-      "JWT-based role authentication with secure teacher/admin privilege escalation"
+      "Custom-designed chassis assembled to support stable movement and sensor placement",
+      "Ultrasonic sensors detect obstacles and guide real-time navigation decisions",
+      "Microcontroller software coordinates motor drivers and turning behavior",
+      "Iterative testing tunes steering and obstacle-avoidance performance"
     ],
-    studentTeam: "Avery Patel & Jordan Smith (Class of '25)"
+    studentTeam: "Student Mechatronics Team"
   },
   {
     id: "robotics-telemetry",
@@ -182,8 +182,8 @@ export const projects = [
   {
     id: "autodeploy-monitor",
     title: "CloudWatch Sentinel: Container Monitor",
-    course: "Cloud",
-    courseFull: "Cloud Computing",
+    course: "PGAS",
+    courseFull: "Programming, Games, Apps, and Society",
     gradeLevel: "12th Grade Project",
     year: "2025",
     tagline: "Automated container health monitor and Slack alerting bot for school servers.",
@@ -202,7 +202,7 @@ export const projects = [
       "Automated Slack alert notifications with incident diagnostic summaries",
       "Lightweight dashboard displaying cluster health status in real time"
     ],
-    studentTeam: "Gabriel Santos (Class of '25)"
+    studentTeam: "Student Development Team"
   }
 ];
 

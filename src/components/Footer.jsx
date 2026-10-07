@@ -22,7 +22,7 @@ function Footer() {
           </Link>
           <p className="footer-mission">
             Empowering students with industry-standard computing fundamentals, College Board AP
-            excellence, and modern cloud deployment capabilities.
+            excellence, and creative software, game, and application development.
           </p>
         </div>
 
@@ -32,7 +32,7 @@ function Footer() {
             <Link to="/courses/ist">IST (Introductory)</Link>
             <Link to="/courses/apcsp">AP Computer Science Principles</Link>
             <Link to="/courses/apcsa">AP Computer Science A</Link>
-            <Link to="/courses/cloud-computing">Cloud Computing Capstone</Link>
+            <Link to="/courses/pgas">Programming, Games, Apps, and Society</Link>
           </div>
 
           <div className="footer-col">

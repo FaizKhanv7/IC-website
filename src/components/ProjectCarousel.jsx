@@ -11,7 +11,7 @@ import {
   Compass,
   BarChart3,
   Gamepad2,
-  Cloud,
+  Bot,
   Cpu,
   HeartHandshake,
   Music,
@@ -24,7 +24,7 @@ const iconMap = {
   Compass: Compass,
   BarChart3: BarChart3,
   Gamepad2: Gamepad2,
-  Cloud: Cloud,
+  Bot: Bot,
   Cpu: Cpu,
   HeartHandshake: HeartHandshake,
   Music: Music,
@@ -36,7 +36,7 @@ const filterTabs = [
   { label: "IST", value: "IST" },
   { label: "AP CSP", value: "AP CSP" },
   { label: "AP CSA", value: "AP CSA" },
-  { label: "Cloud Computing", value: "Cloud" }
+  { label: "PGAS", value: "PGAS" }
 ];
 
 export default function ProjectCarousel() {

@@ -10,7 +10,8 @@ function Courses() {
         <h1 className="page-title">Computer Science Course Catalog</h1>
         <p className="page-lead">
           Four sequential courses engineered to take Forsyth Central students from digital
-          literacy to College Board AP credit and industry cloud certification.
+          literacy to College Board AP credit and a senior capstone in programming,
+          games, apps, and society.
         </p>
       </div>
 

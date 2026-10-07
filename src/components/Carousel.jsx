@@ -26,10 +26,10 @@ const slideData = [
   },
   {
     image: img3,
-    tag: "Real Cloud Infrastructure & DevOps",
-    title: "Deploy Software at Scale",
+    tag: "Programming, Games, Apps & Society",
+    title: "Build Software That Matters",
     subtitle:
-      "Our capstone Cloud Computing course trains students in containerization, AWS cloud architecture, and modern continuous integration.",
+      "In PGAS, students create games and applications while exploring the impact of technology on modern society.",
     primaryCta: { label: "View Capstone Projects", to: "/projects" },
     secondaryCta: { label: "Student Login", to: "/login" }
   }

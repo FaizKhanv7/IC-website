@@ -133,15 +133,15 @@ export default function Projects() {
           <div className="pathway-step-card">
             <div className="step-number">04</div>
             <div className="step-header">
-              <span className="step-course-tag">Cloud</span>
-              <h4>Cloud Architecture & CI/CD</h4>
+              <span className="step-course-tag">PGAS</span>
+              <h4>Programming, Games, Apps &amp; Society</h4>
             </div>
             <p className="step-desc">
-              Production capstone projects deployed to AWS, containerized microservices via
-              Docker, automated CI/CD pipelines, and cloud security monitoring.
+              Senior projects bring together game and application development with
+              thoughtful exploration of technology's impact on society.
             </p>
-            <Link to="/courses/cloud-computing" className="step-link">
-              Explore Cloud Course <ArrowRight size={14} />
+            <Link to="/courses/pgas" className="step-link">
+              Explore PGAS <ArrowRight size={14} />
             </Link>
           </div>
         </div>
@@ -173,7 +173,7 @@ export default function Projects() {
 
         {/* Filter buttons */}
         <div className="gallery-filters">
-          {["ALL", "IST", "AP CSP", "AP CSA", "Cloud"].map(function (c) {
+          {["ALL", "IST", "AP CSP", "AP CSA", "PGAS"].map(function (c) {
             return (
               <button
                 key={c}
