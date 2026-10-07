@@ -1,5 +1,5 @@
 import csimg from "../assets/cs.jpg";
-import { ArrowRight, Code2, Cpu, Cloud, Terminal } from "lucide-react";
+import { ArrowRight, Code2, Cpu, Settings2, Terminal } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const courseList = [
@@ -34,14 +34,14 @@ const courseList = [
     topics: ["Java OOP", "Data Structures", "Algorithms & Search"]
   },
   {
-    code: "CLOUD",
+    code: "Mechatronics",
     badge: "Senior Capstone",
-    title: "Cloud Computing",
-    desc: "Move from writing code to shipping it. Provision real cloud infrastructure on AWS, containerize apps with Docker, and configure CI/CD.",
+    title: "Mechatronics",
+    desc: "Design and build integrated mechanical and electronic systems using sensors, actuators, microcontrollers, and embedded software.",
     image: csimg,
-    href: "/courses/cloud-computing",
-    icon: Cloud,
-    topics: ["AWS Architecture", "Docker Containers", "CI/CD Pipelines"]
+    href: "/courses/mechatronics",
+    icon: Settings2,
+    topics: ["Robotics & CAD", "Sensors & Actuators", "Microcontrollers", "Capstone Project"]
   }
 ];
 

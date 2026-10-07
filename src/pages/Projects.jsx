@@ -30,7 +30,7 @@ export default function Projects() {
         <h1 className="page-title">Student Project Showcase</h1>
         <p className="page-lead">
           From first HTML/CSS interactive layouts to algorithmic Java engines and
-          production-grade cloud deployments. Browse student-engineered work from across
+          autonomous robots. Browse student-engineered work from across
           Forsyth Central Highschool's Computer Science pathway.
         </p>
       </div>
@@ -133,15 +133,15 @@ export default function Projects() {
           <div className="pathway-step-card">
             <div className="step-number">04</div>
             <div className="step-header">
-              <span className="step-course-tag">Cloud</span>
-              <h4>Cloud Architecture & CI/CD</h4>
+              <span className="step-course-tag">Mechatronics</span>
+              <h4>Robotics &amp; Mechatronics</h4>
             </div>
             <p className="step-desc">
-              Production capstone projects deployed to AWS, containerized microservices via
-              Docker, automated CI/CD pipelines, and cloud security monitoring.
+              Senior projects combine mechanical design, electronics, sensors, and
+              embedded software to create working robotic systems.
             </p>
-            <Link to="/courses/cloud-computing" className="step-link">
-              Explore Cloud Course <ArrowRight size={14} />
+            <Link to="/courses/mechatronics" className="step-link">
+              Explore Mechatronics <ArrowRight size={14} />
             </Link>
           </div>
         </div>
@@ -164,7 +164,7 @@ export default function Projects() {
             <input
               type="text"
               className="gallery-search-input"
-              placeholder="Search projects, technologies (e.g. Java, AWS, Python)..."
+              placeholder="Search projects, technologies (e.g. Java, Arduino, Python)..."
               value={searchTerm}
               onChange={function (e) { setSearchTerm(e.target.value); }}
             />
@@ -173,7 +173,7 @@ export default function Projects() {
 
         {/* Filter buttons */}
         <div className="gallery-filters">
-          {["ALL", "IST", "AP CSP", "AP CSA", "Cloud"].map(function (c) {
+          {["ALL", "IST", "AP CSP", "AP CSA", "Mechatronics"].map(function (c) {
             return (
               <button
                 key={c}

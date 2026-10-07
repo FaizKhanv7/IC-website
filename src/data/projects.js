@@ -1,6 +1,6 @@
 /*
  * Showcase of student projects from Forsyth Central Highschool CS Pathway.
- * Covering IST, AP CSP, AP CSA, and Cloud Computing.
+ * Covering IST, AP CSP, AP CSA, and Mechatronics.
  */
 
 export const projects = [
@@ -80,29 +80,29 @@ export const projects = [
     studentTeam: "Marcus Vance & David Zhang (Class of '26)"
   },
   {
-    id: "centralcloud-portal",
-    title: "CentralCloud: School Resource Hub",
-    course: "Cloud",
-    courseFull: "Cloud Computing",
+    id: "bulldog-autonomous-rover",
+    title: "Bulldog Autonomous Rover",
+    course: "Mechatronics",
+    courseFull: "Mechatronics",
     gradeLevel: "12th Grade Capstone",
     year: "2024",
-    tagline: "Serverless full-stack cloud application deployed with automated CI/CD.",
-    description: "The capstone project for the Cloud Computing pathway. CentralCloud is a serverless application built on AWS architecture designed for school club managers to distribute resource files, manage event RSVP lists, and trigger automated notification workflows.",
-    tags: ["AWS Lambda", "API Gateway", "DynamoDB", "Docker", "React", "GitHub Actions"],
+    tagline: "Sensor-guided rover built for autonomous obstacle detection and navigation.",
+    description: "A Mechatronics capstone project, the Bulldog Autonomous Rover combines a custom chassis, microcontroller, distance sensors, and motor drivers to navigate a course and avoid obstacles without remote control.",
+    tags: ["Arduino", "C++", "Ultrasonic Sensors", "Motor Control", "CAD", "Robotics"],
     gradient: "linear-gradient(135deg, #991b1b 0%, #ef4444 100%)",
-    iconName: "Cloud",
+    iconName: "Bot",
     featured: true,
     stats: {
-      metric: "99.9% Uptime",
-      highlight: "AWS Certified Cloud Practitioner Aligned"
+      metric: "Autonomous Navigation",
+      highlight: "Sensor-Guided Obstacle Avoidance"
     },
     features: [
-      "Serverless REST microservices deployed via AWS Lambda and API Gateway",
-      "DynamoDB NoSQL single-table schema design for sub-millisecond queries",
-      "Automated CI/CD pipeline building Docker containers on GitHub Actions",
-      "JWT-based role authentication with secure teacher/admin privilege escalation"
+      "Custom-designed chassis assembled to support stable movement and sensor placement",
+      "Ultrasonic sensors detect obstacles and guide real-time navigation decisions",
+      "Microcontroller software coordinates motor drivers and turning behavior",
+      "Iterative testing tunes steering and obstacle-avoidance performance"
     ],
-    studentTeam: "Avery Patel & Jordan Smith (Class of '25)"
+    studentTeam: "Mechatronics Capstone Team"
   },
   {
     id: "robotics-telemetry",
@@ -180,29 +180,29 @@ export const projects = [
     studentTeam: "Noah Reynolds (Class of '26)"
   },
   {
-    id: "autodeploy-monitor",
-    title: "CloudWatch Sentinel: Container Monitor",
-    course: "Cloud",
-    courseFull: "Cloud Computing",
+    id: "smart-greenhouse-controller",
+    title: "Smart Greenhouse Controller",
+    course: "Mechatronics",
+    courseFull: "Mechatronics",
     gradeLevel: "12th Grade Project",
     year: "2025",
-    tagline: "Automated container health monitor and Slack alerting bot for school servers.",
-    description: "Built by seniors to keep school web servers resilient. CloudWatch Sentinel monitors Docker container health, network latency, and memory spikes, dispatching automated alerts to webhook endpoints and self-healing failed instances.",
-    tags: ["Docker", "Python", "Cloud Architecture", "Webhooks", "Monitoring"],
+    tagline: "Sensor-driven growing environment with automatic watering and ventilation.",
+    description: "The Smart Greenhouse Controller uses a microcontroller to monitor soil moisture and temperature, then operates a water pump and ventilation fan to maintain target growing conditions.",
+    tags: ["ESP32", "C++", "Soil Moisture", "Temperature Sensor", "Relay Control", "Automation"],
     gradient: "linear-gradient(135deg, #111827 0%, #374151 100%)",
-    iconName: "ShieldCheck",
+    iconName: "Cpu",
     featured: true,
     stats: {
-      metric: "100% Automated",
-      highlight: "Self-Healing Container Automation"
+      metric: "Closed-Loop Control",
+      highlight: "Automated Watering & Ventilation"
     },
     features: [
-      "Docker socket listener detecting container crashes and restarting instances",
-      "Prometheus-compatible metric scraper tracking CPU and RAM utilization",
-      "Automated Slack alert notifications with incident diagnostic summaries",
-      "Lightweight dashboard displaying cluster health status in real time"
+      "Soil-moisture sensor triggers watering when readings fall below the target range",
+      "Temperature sensor activates ventilation when the greenhouse gets too warm",
+      "Relay-controlled pump and fan respond automatically to sensor readings",
+      "Calibration and testing help keep the system responsive and reliable"
     ],
-    studentTeam: "Gabriel Santos (Class of '25)"
+    studentTeam: "Mechatronics Project Team"
   }
 ];
 

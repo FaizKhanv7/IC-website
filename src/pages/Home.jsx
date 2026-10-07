@@ -4,7 +4,7 @@ import Courses from "../components/Courses";
 import EnrollCTA from "../components/EnrollCTA";
 import {
   Code2,
-  Cloud,
+  Gamepad2,
   Sparkles,
   ArrowRight,
   GraduationCap
@@ -30,7 +30,7 @@ function Home() {
             Located in Forsyth County, Georgia, the FCHS Computer Science &amp; STEM
             Academy runs a rigorous four-course career pathway. We take students from
             their very first line of code through College Board AP coursework and into
-            enterprise cloud deployment. No prior experience required — just curiosity
+            a senior capstone in mechatronics and robotics. No prior experience required — just curiosity
             and drive.
           </p>
 
@@ -49,8 +49,8 @@ function Home() {
               <span className="stat-sub">Hands-On Project Based</span>
             </div>
             <div className="pathway-stat-item">
-              <span className="stat-big">Cloud</span>
-              <span className="stat-sub">Industry Capstone Ready</span>
+              <span className="stat-big">Robotics</span>
+              <span className="stat-sub">Senior Capstone</span>
             </div>
           </div>
         </div>
@@ -67,8 +67,8 @@ function Home() {
             <h2 className="banner-heading">Explore Real Student Projects</h2>
             <p className="banner-subtext">
               Every course ends with an authentic, student-built application. From
-              interactive campus guides and environmental data trackers to full Java game
-              engines and serverless cloud portals — check out our interactive showcase.
+              interactive campus guides and environmental data trackers to autonomous
+              robots and sensor-driven systems — check out our interactive showcase.
             </p>
             <div className="banner-actions">
               <Link to="/projects" className="btn btn-primary">
@@ -84,9 +84,9 @@ function Home() {
               <p>Object-oriented Java game with A* pathfinding and recursive maps.</p>
             </div>
             <div className="preview-mini-card">
-              <div className="preview-badge cloud">Cloud</div>
-              <h4>CentralCloud Portal</h4>
-              <p>Serverless AWS Lambda &amp; DynamoDB architecture with CI/CD.</p>
+              <div className="preview-badge mechatronics">Mechatronics</div>
+              <h4>Bulldog Autonomous Rover</h4>
+              <p>Sensor-guided robot for obstacle detection and autonomous navigation.</p>
             </div>
             <div className="preview-mini-card">
               <div className="preview-badge ap-csp">AP CSP</div>
@@ -139,12 +139,12 @@ function Home() {
 
             <div className="pillar-card">
               <div className="pillar-icon-wrap">
-                <Cloud size={24} />
+                <Gamepad2 size={24} />
               </div>
-              <h3 className="pillar-title">Enterprise Capstone</h3>
+              <h3 className="pillar-title">Mechatronics Capstone</h3>
               <p className="pillar-text">
-                Senior capstone integrates Docker, AWS, cloud architecture, and modern DevOps
-                practices standard in the tech industry.
+                Students combine mechanical design, electronics, and embedded programming
+                to build robots and intelligent systems.
               </p>
             </div>
           </div>

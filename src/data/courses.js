@@ -4,7 +4,7 @@
  * NOTE: every number below is a PLACEHOLDER. Replace `stats` with the real
  * figures from the department before this goes live.
  *
- * IST and Cloud Computing are not AP courses, so they report a course-level
+ * IST and Mechatronics are not AP courses, so they report a course-level
  * stat instead of an AP score.
  */
 
@@ -76,22 +76,22 @@ export const courses = [
     },
   },
   {
-    slug: "cloud-computing",
-    path: "/courses/cloud-computing",
-    code: "Cloud",
-    title: "Cloud Computing",
-    tagline: "Deploy and operate real software on real infrastructure.",
+    slug: "mechatronics",
+    path: "/courses/mechatronics",
+    code: "MECH",
+    title: "Mechatronics",
+    tagline: "Design and build intelligent systems that combine mechanics, electronics, and software.",
     isAP: false,
     description:
-      "The pathway's capstone course moves students from writing code to shipping it. Students provision cloud resources, deploy applications, and learn how modern teams handle storage, security, and cost. The course maps to industry certification objectives, so students finish with credentials that carry weight outside the classroom.",
+      "Mechatronics is the pathway's senior capstone, bringing together mechanical design, electronics, and programming. Students use microcontrollers, sensors, and actuators to design, build, and test interactive systems and robots.",
     topics: [
-      "Cloud service and deployment models",
-      "Virtual machines, containers, and storage",
-      "Identity, access management, and security",
-      "CI/CD and cost management",
+      "Mechanical design and CAD",
+      "Circuits, sensors, and actuators",
+      "Microcontrollers and embedded programming",
+      "Robotics and integrated capstone project",
     ],
     stats: {
-      primaryLabel: "Certification Pass Rate",
+      primaryLabel: "Course Average",
       primaryValue: "—",
       projects: "—",
       enrolled: "—",

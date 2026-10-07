@@ -16,8 +16,7 @@ function About() {
         <h1 className="page-title">About the Computer Science Pathway</h1>
         <p className="page-lead">
           A four-course sequence in the FCHS STEM Academy designed to take students from
-          their first line of code to architecting and deploying software on real cloud
-          infrastructure.
+          their first line of code to designing and building integrated robotic systems.
         </p>
       </div>
 
@@ -30,12 +29,12 @@ function About() {
               <strong> Forsyth Central Highschool</strong> in <strong>Forsyth County</strong>.
               Students begin in 9th grade with Information Science &amp; Technology (IST),
               move through two College Board Advanced Placement courses (AP CSP and AP CSA),
-              and finish with an industry-aligned capstone in Cloud Computing.
+              and finish with a hands-on Mechatronics capstone.
             </p>
             <p className="page-text">
               Each course builds progressively on the last. Rather than leaving high school
               with only textbook notes, our Bulldogs graduate with an authentic portfolio of
-              published web apps, algorithmic Java software, and cloud-hosted microservices.
+              published web apps, algorithmic Java software, and working robotic prototypes.
             </p>
 
             <div className="about-highlights-grid">
@@ -56,8 +55,8 @@ function About() {
               <div className="about-highlight-box">
                 <CheckCircle2 className="highlight-icon" size={20} />
                 <div>
-                  <strong>Cloud Certification Alignment</strong>
-                  <p>Prepares students for entry-level AWS / Cloud industry credentials.</p>
+                  <strong>Hands-On Mechatronics Capstone</strong>
+                  <p>Students combine mechanical design, electronics, and programming to build real systems.</p>
                 </div>
               </div>
               <div className="about-highlight-box">
@@ -148,12 +147,12 @@ function About() {
 
           <div className="about-pillar-box">
             <span className="pillar-step">Year 4</span>
-            <h4>Cloud Computing Capstone</h4>
+            <h4>Mechatronics</h4>
             <p>
-              AWS cloud infrastructure, containerization via Docker, serverless REST APIs, CI/CD
-              pipelines, and industry certifications.
+              Robotics, mechanical design, electronics, sensors, microcontrollers, and an
+              integrated student-designed capstone.
             </p>
-            <Link to="/courses/cloud-computing" className="link-arrow">Course details &rarr;</Link>
+            <Link to="/courses/mechatronics" className="link-arrow">Course details &rarr;</Link>
           </div>
         </div>
       </section>

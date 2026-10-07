@@ -26,10 +26,10 @@ const slideData = [
   },
   {
     image: img3,
-    tag: "Real Cloud Infrastructure & DevOps",
-    title: "Deploy Software at Scale",
+    tag: "Robotics, Electronics & Design",
+    title: "Build Intelligent Machines",
     subtitle:
-      "Our capstone Cloud Computing course trains students in containerization, AWS cloud architecture, and modern continuous integration.",
+      "In Mechatronics, students combine mechanical design, electronics, sensors, and embedded software to build interactive systems.",
     primaryCta: { label: "View Capstone Projects", to: "/projects" },
     secondaryCta: { label: "Student Login", to: "/login" }
   }
