@@ -2136,6 +2136,52 @@ body {
   flex: 1;
 }
 
+.standards-document {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  min-width: 0;
+  padding: 22px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.standards-document-icon {
+  flex-shrink: 0;
+  color: var(--brand);
+}
+
+.standards-document-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.standards-document h2 {
+  margin: 0 0 6px;
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.standards-document p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.standards-document-status {
+  flex-shrink: 0;
+  padding: 4px 8px;
+  color: var(--muted);
+  background: var(--brand-light);
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
 .link-arrow {
   color: var(--brand);
   font-size: 13px;
@@ -2979,6 +3025,16 @@ body {
 
   .about-pillars-grid {
     grid-template-columns: 1fr;
+  }
+
+  .standards-document {
+    padding: 18px;
+    gap: 12px;
+  }
+
+  .standards-document-status {
+    padding: 4px 6px;
+    font-size: 10px;
   }
 
   .topics-grid {
