@@ -9,6 +9,7 @@ import APCSP from "./pages/APCSP"
 import APCSA from "./pages/APCSA"
 import PGAS from "./pages/PGAS"
 import Projects from "./pages/Projects"
+import Standards from "./pages/Standards"
 import Login from "./pages/Login"
 import NotFound from "./pages/NotFound"
 
@@ -26,6 +27,17 @@ function App() {
         <Route path="/courses/pgas" element={<PGAS />} />
         <Route path="/courses/cloud-computing" element={<Navigate to="/courses/pgas" replace />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/standards" element={<Navigate to="/standards/1" replace />} />
+        {Array.from({ length: 6 }, function (_, index) {
+          const standardNumber = index + 1;
+          return (
+            <Route
+              key={standardNumber}
+              path={"/standards/" + standardNumber}
+              element={<Standards standardNumber={standardNumber} />}
+            />
+          );
+        })}
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

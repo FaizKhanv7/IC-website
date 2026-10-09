@@ -1,16 +1,19 @@
 import { useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import Logo from "/favicon.ico";
 import { ChevronDown, Sparkles } from "lucide-react";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [standardsDropdownOpen, setStandardsDropdownOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const closeAll = function () {
     setMenuOpen(false);
     setDropdownOpen(false);
+    setStandardsDropdownOpen(false);
   };
 
   return (
@@ -55,13 +58,15 @@ function Navbar() {
             {/* Courses Dropdown */}
             <div
               className="nav-dropdown-item"
-              onMouseEnter={function () { setDropdownOpen(true); }}
+              onMouseEnter={function () { setDropdownOpen(true); setStandardsDropdownOpen(false); }}
               onMouseLeave={function () { setDropdownOpen(false); }}
             >
               <button
                 type="button"
                 className={"nav-item-link dropdown-toggle" + (dropdownOpen ? " active" : "")}
-                onClick={function () { setDropdownOpen(!dropdownOpen); }}
+                aria-expanded={dropdownOpen}
+                aria-haspopup="true"
+                onClick={function () { setDropdownOpen(!dropdownOpen); setStandardsDropdownOpen(false); }}
               >
                 Courses <ChevronDown size={14} className="dropdown-caret" />
               </button>
@@ -83,6 +88,38 @@ function Navbar() {
                 <Link to="/courses/pgas" className="dropdown-menu-item" onClick={closeAll}>
                   <span className="menu-code">PGAS</span> Programming, Games, Apps, and Society
                 </Link>
+              </div>
+            </div>
+
+            <div
+              className="nav-dropdown-item"
+              onMouseEnter={function () { setStandardsDropdownOpen(true); setDropdownOpen(false); }}
+              onMouseLeave={function () { setStandardsDropdownOpen(false); }}
+            >
+              <button
+                type="button"
+                className={"nav-item-link dropdown-toggle" + ((standardsDropdownOpen || location.pathname.startsWith("/standards")) ? " active" : "")}
+                aria-expanded={standardsDropdownOpen}
+                aria-haspopup="true"
+                onClick={function () { setStandardsDropdownOpen(!standardsDropdownOpen); setDropdownOpen(false); }}
+              >
+                Standards <ChevronDown size={14} className="dropdown-caret" />
+              </button>
+
+              <div className={"dropdown-menu" + (standardsDropdownOpen ? " dropdown-menu-open" : "")}>
+                {Array.from({ length: 6 }, function (_, index) {
+                  const standardNumber = index + 1;
+                  return (
+                    <Link
+                      key={standardNumber}
+                      to={"/standards/" + standardNumber}
+                      className="dropdown-menu-item"
+                      onClick={closeAll}
+                    >
+                      Standard {standardNumber}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
 
