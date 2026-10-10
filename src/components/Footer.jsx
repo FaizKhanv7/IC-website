@@ -32,7 +32,17 @@ function Footer() {
             <Link to="/courses/ist">IST (Introductory)</Link>
             <Link to="/courses/apcsp">AP Computer Science Principles</Link>
             <Link to="/courses/apcsa">AP Computer Science A</Link>
-            <Link to="/courses/pgas">Programming, Games, Apps, and Society</Link>
+            <Link to="/courses/pgas">Programming, Games, Apps &amp; Society</Link>
+          </div>
+
+          <div className="footer-col">
+            <h4 className="footer-col-title">Standards</h4>
+            <Link to="/standards/1">Standard 1</Link>
+            <Link to="/standards/2">Standard 2</Link>
+            <Link to="/standards/3">Standard 3</Link>
+            <Link to="/standards/4">Standard 4</Link>
+            <Link to="/standards/5">Standard 5</Link>
+            <Link to="/standards/6">Standard 6</Link>
           </div>
 
           <div className="footer-col">

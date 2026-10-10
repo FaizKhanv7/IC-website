@@ -1,125 +1,313 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import Logo from "/favicon.ico";
-import { ChevronDown, Sparkles } from "lucide-react";
+import {
+  ChevronDown,
+  Sparkles,
+  BookOpen,
+  Terminal,
+  Code2,
+  Cpu,
+  Gamepad2,
+  LayoutGrid,
+  Menu,
+  X,
+} from "lucide-react";
 
+/* ── Nav data ─────────────────────────────────────────────── */
+const COURSES_ITEMS = [
+  { code: "All", label: "All Courses Overview", to: "/courses", icon: LayoutGrid, desc: "Browse the full four-course pathway" },
+  { code: "IST", label: "Information Science & Technology", to: "/courses/ist", icon: Terminal, desc: "The entry point — no experience required" },
+  { code: "AP CSP", label: "AP Computer Science Principles", to: "/courses/apcsp", icon: Code2, desc: "Algorithms, data, and the Create Task" },
+  { code: "AP CSA", label: "AP Computer Science A", to: "/courses/apcsa", icon: Cpu, desc: "Java, OOP, and data structures" },
+  { code: "PGAS", label: "Programming, Games, Apps & Society", to: "/courses/pgas", icon: Gamepad2, desc: "Senior capstone — build real software" },
+];
+
+const STANDARDS_ITEMS = Array.from({ length: 6 }, function (_, i) {
+  return { num: i + 1, label: "Standard " + (i + 1), to: "/standards/" + (i + 1) };
+});
+
+/* ── Animation variants ───────────────────────────────────── */
+const dropdownVariants = {
+  hidden: { opacity: 0, y: 8, scale: 0.97 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.18, ease: [0.16, 1, 0.3, 1] } },
+  exit: { opacity: 0, y: 6, scale: 0.97, transition: { duration: 0.13, ease: "easeIn" } },
+};
+
+/* ── Main Component ───────────────────────────────────────── */
 function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState(null); // "courses" | "standards" | null
+  const [hoverId, setHoverId] = useState(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const navigate = useNavigate();
 
   const closeAll = function () {
-    setMenuOpen(false);
-    setDropdownOpen(false);
+    setOpenMenu(null);
+    setMobileOpen(false);
   };
 
-  return (
-    <header className="navbar-container">
-      {/* Top micro banner for Forsyth County */}
-      <div className="top-utility-bar">
-        <div className="utility-inner">
-          <span>Forsyth Central Highschool &bull; Forsyth County Schools</span>
-          <span className="utility-tag">STEM Academy &bull; Bulldogs CS</span>
-        </div>
-      </div>
+  /* Simple nav items (no dropdown) */
+  const simpleItems = [
+    { id: "home", label: "Home", to: "/" },
+    { id: "about", label: "About", to: "/about" },
+    { id: "projects", label: "Projects", to: "/projects", sparkle: true },
+  ];
 
-      <nav className="main-nav-bar">
-        <div className="nav-inner">
-          {/* Brand Logo & Title */}
-          <Link to="/" className="brand-wrap" onClick={closeAll}>
-            <img src={Logo} alt="Forsyth Central Logo" className="brand-logo" />
-            <div className="brand-text-block">
-              <span className="brand-title">FORSYTH CENTRAL</span>
-              <span className="brand-sub">Computer Science Pathway</span>
+  return (
+    <header className="pnav-shell">
+      {/* ── Pill nav bar ────────────────────────────────────── */}
+      <div className="pnav-outer">
+        <nav className="pnav-pill">
+
+          {/* Brand */}
+          <Link to="/" className="pnav-brand" onClick={closeAll}>
+            <img src={Logo} alt="Forsyth Central" className="pnav-logo" />
+            <div className="pnav-brand-text">
+              <span className="pnav-brand-name">FORSYTH CENTRAL</span>
+              <span className="pnav-brand-sub">CS Pathway</span>
             </div>
           </Link>
 
-          {/* Desktop Nav Links */}
-          <div className={"nav-menu" + (menuOpen ? " nav-menu-open" : "")}>
-            <NavLink
-              to="/"
-              className={function ({ isActive }) { return "nav-item-link" + (isActive ? " active" : ""); }}
-              onClick={closeAll}
-            >
-              Home
-            </NavLink>
+          {/* Divider */}
+          <div className="pnav-divider" />
 
-            <NavLink
-              to="/about"
-              className={function ({ isActive }) { return "nav-item-link" + (isActive ? " active" : ""); }}
-              onClick={closeAll}
-            >
-              About
-            </NavLink>
+          {/* Desktop link list */}
+          <ul className="pnav-links">
 
-            {/* Courses Dropdown */}
-            <div
-              className="nav-dropdown-item"
-              onMouseEnter={function () { setDropdownOpen(true); }}
-              onMouseLeave={function () { setDropdownOpen(false); }}
+            {/* Home */}
+            <li
+              onMouseEnter={function () { setHoverId("home"); setOpenMenu(null); }}
+              onMouseLeave={function () { setHoverId(null); }}
+            >
+              <NavLink
+                to="/"
+                end
+                className={function ({ isActive }) { return "pnav-link" + (isActive ? " pnav-link-active" : ""); }}
+                onClick={closeAll}
+              >
+                {(hoverId === "home") && (
+                  <motion.span layoutId="pill-hover" className="pnav-hover-bg" style={{ borderRadius: 99 }} />
+                )}
+                <span className="pnav-link-label">Home</span>
+              </NavLink>
+            </li>
+
+            {/* About */}
+            <li
+              onMouseEnter={function () { setHoverId("about"); setOpenMenu(null); }}
+              onMouseLeave={function () { setHoverId(null); }}
+            >
+              <NavLink
+                to="/about"
+                className={function ({ isActive }) { return "pnav-link" + (isActive ? " pnav-link-active" : ""); }}
+                onClick={closeAll}
+              >
+                {(hoverId === "about") && (
+                  <motion.span layoutId="pill-hover" className="pnav-hover-bg" style={{ borderRadius: 99 }} />
+                )}
+                <span className="pnav-link-label">About</span>
+              </NavLink>
+            </li>
+
+            {/* Courses dropdown */}
+            <li
+              className="pnav-dd-wrap"
+              onMouseEnter={function () { setHoverId("courses"); setOpenMenu("courses"); }}
+              onMouseLeave={function () { setHoverId(null); setOpenMenu(null); }}
             >
               <button
                 type="button"
-                className={"nav-item-link dropdown-toggle" + (dropdownOpen ? " active" : "")}
-                onClick={function () { setDropdownOpen(!dropdownOpen); }}
+                className={"pnav-link pnav-dd-btn" + (openMenu === "courses" ? " pnav-link-active" : "")}
+                onClick={function () { setOpenMenu(openMenu === "courses" ? null : "courses"); }}
               >
-                Courses <ChevronDown size={14} className="dropdown-caret" />
+                {(hoverId === "courses" || openMenu === "courses") && (
+                  <motion.span layoutId="pill-hover" className="pnav-hover-bg" style={{ borderRadius: 99 }} />
+                )}
+                <span className="pnav-link-label">
+                  Courses
+                  <ChevronDown size={13} className={"pnav-caret" + (openMenu === "courses" ? " pnav-caret-open" : "")} />
+                </span>
               </button>
 
-              <div className={"dropdown-menu" + (dropdownOpen ? " dropdown-menu-open" : "")}>
-                <Link to="/courses" className="dropdown-menu-item view-all" onClick={closeAll}>
-                  All Courses Overview &rarr;
-                </Link>
-                <div className="dropdown-divider" />
-                <Link to="/courses/ist" className="dropdown-menu-item" onClick={closeAll}>
-                  <span className="menu-code">IST</span> Information Science &amp; Technology
-                </Link>
-                <Link to="/courses/apcsp" className="dropdown-menu-item" onClick={closeAll}>
-                  <span className="menu-code">AP CSP</span> AP Computer Science Principles
-                </Link>
-                <Link to="/courses/apcsa" className="dropdown-menu-item" onClick={closeAll}>
-                  <span className="menu-code">AP CSA</span> AP Computer Science A (Java)
-                </Link>
-                <Link to="/courses/pgas" className="dropdown-menu-item" onClick={closeAll}>
-                  <span className="menu-code">PGAS</span> Programming, Games, Apps, and Society
-                </Link>
+              <AnimatePresence>
+                {openMenu === "courses" && (
+                  <motion.div
+                    className="pnav-dropdown pnav-courses-dd"
+                    variants={dropdownVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                  >
+                    {COURSES_ITEMS.map(function (item) {
+                      const Icon = item.icon;
+                      return (
+                        <Link
+                          key={item.code}
+                          to={item.to}
+                          className="pnav-dd-item"
+                          onClick={closeAll}
+                        >
+                          <div className="pnav-dd-icon">
+                            <Icon size={16} />
+                          </div>
+                          <div className="pnav-dd-text">
+                            <span className="pnav-dd-label">
+                              {item.code !== "All" && <span className="pnav-dd-code">{item.code}</span>}
+                              {item.label}
+                            </span>
+                            <span className="pnav-dd-desc">{item.desc}</span>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </li>
+
+            {/* Standards dropdown */}
+            <li
+              className="pnav-dd-wrap"
+              onMouseEnter={function () { setHoverId("standards"); setOpenMenu("standards"); }}
+              onMouseLeave={function () { setHoverId(null); setOpenMenu(null); }}
+            >
+              <button
+                type="button"
+                className={"pnav-link pnav-dd-btn" + (openMenu === "standards" ? " pnav-link-active" : "")}
+                onClick={function () { setOpenMenu(openMenu === "standards" ? null : "standards"); }}
+              >
+                {(hoverId === "standards" || openMenu === "standards") && (
+                  <motion.span layoutId="pill-hover" className="pnav-hover-bg" style={{ borderRadius: 99 }} />
+                )}
+                <span className="pnav-link-label">
+                  <BookOpen size={13} className="pnav-icon-inline" />
+                  Standards
+                  <ChevronDown size={13} className={"pnav-caret" + (openMenu === "standards" ? " pnav-caret-open" : "")} />
+                </span>
+              </button>
+
+              <AnimatePresence>
+                {openMenu === "standards" && (
+                  <motion.div
+                    className="pnav-dropdown pnav-standards-dd"
+                    variants={dropdownVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                  >
+                    <p className="pnav-dd-group-label">Course Standards</p>
+                    <div className="pnav-standards-grid">
+                      {STANDARDS_ITEMS.map(function (s) {
+                        return (
+                          <Link
+                            key={s.num}
+                            to={s.to}
+                            className="pnav-standard-item"
+                            onClick={closeAll}
+                          >
+                            <span className="pnav-std-num">{s.num}</span>
+                            <span className="pnav-std-label">{s.label}</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </li>
+
+            {/* Projects (sparkle pill) */}
+            <li
+              onMouseEnter={function () { setHoverId("projects"); setOpenMenu(null); }}
+              onMouseLeave={function () { setHoverId(null); }}
+            >
+              <NavLink
+                to="/projects"
+                className={function ({ isActive }) { return "pnav-link pnav-projects-pill" + (isActive ? " pnav-projects-active" : ""); }}
+                onClick={closeAll}
+              >
+                <Sparkles size={13} className="pnav-sparkle" />
+                <span className="pnav-link-label">Projects</span>
+              </NavLink>
+            </li>
+
+          </ul>
+
+          {/* Student Portal CTA */}
+          <button
+            type="button"
+            className="pnav-portal-btn"
+            onClick={function () { closeAll(); navigate("/login"); }}
+          >
+            Student Portal
+          </button>
+
+          {/* Mobile hamburger */}
+          <button
+            type="button"
+            className="pnav-mobile-btn"
+            onClick={function () { setMobileOpen(!mobileOpen); }}
+            aria-label="Toggle navigation"
+          >
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+
+        </nav>
+      </div>
+
+      {/* ── Mobile drawer ───────────────────────────────────── */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            className="pnav-mobile-drawer"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0, transition: { duration: 0.18 } }}
+            exit={{ opacity: 0, y: -8, transition: { duration: 0.13 } }}
+          >
+            <Link to="/" className="pnav-mob-link" onClick={closeAll}>Home</Link>
+            <Link to="/about" className="pnav-mob-link" onClick={closeAll}>About</Link>
+
+            <div className="pnav-mob-section">
+              <span className="pnav-mob-section-label">Courses</span>
+              {COURSES_ITEMS.map(function (item) {
+                return (
+                  <Link key={item.code} to={item.to} className="pnav-mob-sub-link" onClick={closeAll}>
+                    {item.code !== "All" && <span className="pnav-mob-code">{item.code}</span>}
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </div>
+
+            <div className="pnav-mob-section">
+              <span className="pnav-mob-section-label">Standards</span>
+              <div className="pnav-mob-standards-grid">
+                {STANDARDS_ITEMS.map(function (s) {
+                  return (
+                    <Link key={s.num} to={s.to} className="pnav-mob-std-item" onClick={closeAll}>
+                      <span className="pnav-std-num">{s.num}</span>
+                      {s.label}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
 
-            <NavLink
-              to="/projects"
-              className={function ({ isActive }) { return "nav-item-link highlight-pill" + (isActive ? " active" : ""); }}
-              onClick={closeAll}
-            >
-              <Sparkles size={14} className="nav-sparkle" />
-              Projects
-            </NavLink>
-          </div>
+            <Link to="/projects" className="pnav-mob-link" onClick={closeAll}>
+              <Sparkles size={14} /> Projects
+            </Link>
 
-          {/* Action CTA */}
-          <div className="nav-actions">
             <button
               type="button"
-              className="btn btn-primary btn-sm login-nav-btn"
+              className="btn btn-primary btn-block"
               onClick={function () { closeAll(); navigate("/login"); }}
             >
               Student Portal
             </button>
-
-            {/* Hamburger Button for mobile */}
-            <button
-              type="button"
-              className={"mobile-toggle" + (menuOpen ? " active" : "")}
-              onClick={function () { setMenuOpen(!menuOpen); }}
-              aria-label="Toggle navigation"
-            >
-              <span className="toggle-bar"></span>
-              <span className="toggle-bar"></span>
-              <span className="toggle-bar"></span>
-            </button>
-          </div>
-        </div>
-      </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
