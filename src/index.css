@@ -2369,6 +2369,17 @@ body {
   box-shadow: var(--shadow-xs);
 }
 
+.course-syllabus-embed {
+  display: block;
+  width: 100%;
+  height: min(80vh, 900px);
+  min-height: 520px;
+  margin-top: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #f8fafc;
+}
+
 .topics-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -2976,6 +2987,11 @@ body {
 
   .topics-grid {
     grid-template-columns: 1fr;
+  }
+
+  .course-syllabus-embed {
+    height: 70vh;
+    min-height: 420px;
   }
 
   .featured-projects-preview-grid {

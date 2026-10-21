@@ -16,6 +16,7 @@ export const courses = [
     title: "Information Science & Technology",
     tagline: "The entry point to the pathway — no experience required.",
     isAP: false,
+    syllabus: null,
     description:
       "IST is the first course in the pathway and assumes no prior programming experience. Students learn how computers represent and move information, then put that theory to work building their first webpages, spreadsheets, and small programs. The course focuses on digital literacy, problem decomposition, and the habits — version control, documentation, testing — that the later courses depend on.",
     topics: [
@@ -38,6 +39,7 @@ export const courses = [
     title: "AP Computer Science Principles",
     tagline: "Broad foundations in computing, plus a College Board exam.",
     isAP: true,
+    syllabus: "/syllabi/FCS%2026-27%20APCSP%20Syllabus.pdf",
     description:
       "AP CSP is a survey of computing as a discipline. Rather than focusing on a single language, students study how algorithms, data, and the internet actually work, and examine the social impact of the systems they build. Coursework centers on the Create Performance Task — an independent program students design, build, and document for College Board submission.",
     topics: [
@@ -60,6 +62,7 @@ export const courses = [
     title: "AP Computer Science A",
     tagline: "Java, object-oriented design, and data structures.",
     isAP: true,
+    syllabus: "/syllabi/FCS%2026-27%20APCSA%20Syllabus.pdf",
     description:
       "AP CSA is the pathway's most rigorous programming course, equivalent to a first-semester college CS class. Students work in Java to design classes, reason about inheritance and polymorphism, and implement the core data structures and algorithms the AP exam requires. Emphasis is on writing code that is correct, readable, and testable.",
     topics: [
@@ -82,6 +85,7 @@ export const courses = [
     title: "Programming, Games, Apps, and Society",
     tagline: "Build software, games, and apps while exploring technology's impact on society.",
     isAP: false,
+    syllabus: "/syllabi/FCS%2026-27%20PGAS%20Syllabus.pdf",
     description:
       "PGAS is the pathway's senior capstone, where students explore the intersection of software development, game design, and application creation. Students build projects while examining how technology shapes modern society and the communities around them.",
     topics: [

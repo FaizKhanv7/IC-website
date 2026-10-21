@@ -73,6 +73,31 @@ function CoursePage({ slug }) {
         </div>
       </section>
 
+      {/* Course syllabus PDF */}
+      <section className="page-section course-section-card course-syllabus-section">
+        <h2 className="page-heading">Course Syllabus</h2>
+        {course.syllabus ? (
+          <>
+            <p className="page-text">
+              View the {course.code} syllabus for the 2026–27 school year below, or{" "}
+              <a href={course.syllabus} target="_blank" rel="noreferrer">
+                open the PDF in a new tab
+              </a>.
+            </p>
+            <iframe
+              className="course-syllabus-embed"
+              src={course.syllabus}
+              title={course.code + " 2026–27 course syllabus"}
+              loading="lazy"
+            />
+          </>
+        ) : (
+          <p className="page-text">
+            The IST syllabus has not been provided yet.
+          </p>
+        )}
+      </section>
+
       {/* Projects CTA banner */}
       <section className="course-projects-cta">
         <div className="cta-icon-side">
