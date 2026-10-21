@@ -1,85 +1,84 @@
-import csimg from "../assets/cs.jpg";
+import apcsaImage from "../assets/APCSA.png";
+import apcspImage from "../assets/APCSP.png";
+import istImage from "../assets/IST.png";
+import pgasImage from "../assets/PGAS.png";
 import { ArrowRight, Code2, Cpu, Gamepad2, Terminal } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const courseList = [
   {
     code: "IST",
-    badge: "Introductory",
+    badge: "Year 1 · Introductory",
     title: "Information Science & Technology",
-    desc: "The entry point to the pathway — no coding experience required. Master digital literacy, hardware, and web development fundamentals.",
-    image: csimg,
+    desc: "The entry point — no coding experience required. Master digital literacy, hardware, and web fundamentals.",
+    image: istImage,
     href: "/courses/ist",
     icon: Terminal,
-    topics: ["HTML5 & CSS3", "Intro JavaScript", "Hardware & Networks"]
+    accent: "#2563eb",
   },
   {
     code: "AP CSP",
-    badge: "AP College Board",
+    badge: "Year 2 · AP College Board",
     title: "AP Computer Science Principles",
-    desc: "Explore foundational concepts of computing, big data analysis, internet architecture, and build the College Board Create Task project.",
-    image: csimg,
+    desc: "Explore algorithms, big data, internet architecture, and build the College Board Create Task project.",
+    image: apcspImage,
     href: "/courses/apcsp",
     icon: Code2,
-    topics: ["Algorithms & Abstraction", "Data Viz", "Create Task Project"]
+    accent: "#059669",
   },
   {
     code: "AP CSA",
-    badge: "AP College Board",
+    badge: "Year 3 · AP College Board",
     title: "AP Computer Science A",
-    desc: "Rigorous Java software engineering, object-oriented design, recursion, and core data structures. College-level computer science.",
-    image: csimg,
+    desc: "Rigorous Java engineering, object-oriented design, recursion, and core data structures.",
+    image: apcsaImage,
     href: "/courses/apcsa",
     icon: Cpu,
-    topics: ["Java OOP", "Data Structures", "Algorithms & Search"]
+    accent: "#7c3aed",
   },
   {
     code: "PGAS",
-    badge: "Senior Capstone",
-    title: "Programming, Games, Apps, and Society",
-    desc: "Explore software development, game design, and application creation while analyzing technology's impact on modern society.",
-    image: csimg,
+    badge: "Year 4 · Senior Capstone",
+    title: "Programming, Games, Apps & Society",
+    desc: "Build software, games, and apps while exploring technology's real-world impact on society.",
+    image: pgasImage,
     href: "/courses/pgas",
     icon: Gamepad2,
-    topics: ["Game Development", "Mobile & Web Apps", "Tech & Society", "Capstone Project"]
-  }
+    accent: "#c5162f",
+  },
 ];
 
 function CourseCard({ course }) {
-  const IconComp = course.icon;
+  const Icon = course.icon;
   return (
-    <Link className="modern-course-card" to={course.href}>
-      <div className="modern-card-banner">
-        <img src={course.image} alt={course.title} className="modern-card-bg-img" />
-        <div className="card-badge-row">
-          <span className="course-code-pill">{course.code}</span>
-          <span className="course-level-pill">{course.badge}</span>
-        </div>
-      </div>
+    <Link to={course.href} className="cc-card" style={{ "--accent": course.accent }}>
+      {/* Full-bleed background image */}
+      <img src={course.image} alt={course.title} className="cc-bg-img" />
 
-      <div className="modern-card-content">
-        <div className="card-icon-title-row">
-          <div className="card-micro-icon">
-            <IconComp size={20} />
+      {/* Dark gradient overlay */}
+      <div className="cc-overlay" />
+
+      {/* Content */}
+      <div className="cc-body">
+        {/* Top — icon chip + code badge, always visible */}
+        <div className="cc-top">
+          <div className="cc-icon-chip">
+            <Icon size={18} />
           </div>
-          <h3 className="modern-course-title">{course.title}</h3>
+          <span className="cc-code-badge">{course.code}</span>
         </div>
 
-        <p className="modern-course-desc">{course.desc}</p>
-
-        <div className="course-topics-pills">
-          {course.topics.map(function (top) {
-            return (
-              <span key={top} className="topic-pill">
-                {top}
-              </span>
-            );
-          })}
+        {/* Middle — title + badge, slides up on hover */}
+        <div className="cc-middle">
+          <p className="cc-badge">{course.badge}</p>
+          <h3 className="cc-title">{course.title}</h3>
+          <p className="cc-desc">{course.desc}</p>
         </div>
 
-        <div className="modern-card-footer">
-          <span className="learn-more-link">
-            Explore Syllabus <ArrowRight size={14} className="arrow-icon" />
+        {/* Bottom — revealed on hover */}
+        <div className="cc-bottom">
+          <span className="cc-cta">
+            Explore Course <ArrowRight size={14} />
           </span>
         </div>
       </div>
@@ -89,22 +88,19 @@ function CourseCard({ course }) {
 
 export default function Courses() {
   return (
-    <section className="courses-section" id="courses">
-      <div className="container">
-        <div className="section-header-centered">
-          <span className="page-eyebrow">Sequential Curriculum</span>
-          <h2 className="section-title">The Four-Course Pathway</h2>
-          <p className="section-subtitle">
-            Designed to take high schoolers at Forsyth Central from complete beginners to
-            industry-certified software builders.
-          </p>
-        </div>
-
-        <div className="modern-course-grid">
-          {courseList.map(function (c) {
-            return <CourseCard key={c.code} course={c} />;
-          })}
-        </div>
+    <section className="cc-section" id="courses">
+      <div className="cc-header">
+        <p className="page-eyebrow">Sequential Curriculum</p>
+        <h2 className="cc-heading">The Four-Course Pathway</h2>
+        <p className="cc-subheading">
+          From first line of code to senior capstone — four courses built to take
+          Forsyth Central students into any technical field.
+        </p>
+      </div>
+      <div className="cc-grid">
+        {courseList.map(function (c) {
+          return <CourseCard key={c.code} course={c} />;
+        })}
       </div>
     </section>
   );

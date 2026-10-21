@@ -1,10 +1,9 @@
 import { useState, useRef } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValueEvent, useScroll } from "framer-motion";
 import Logo from "/favicon.ico";
 import {
   ChevronDown,
-  Sparkles,
   BookOpen,
   Terminal,
   Code2,
@@ -35,32 +34,100 @@ const dropdownVariants = {
   exit: { opacity: 0, y: 6, scale: 0.97, transition: { duration: 0.13, ease: "easeIn" } },
 };
 
+const navVariants = {
+  expanded: {
+    y: 0,
+    opacity: 1,
+    width: "auto",
+    transition: {
+      type: "spring",
+      damping: 20,
+      stiffness: 300,
+      staggerChildren: 0.07,
+      delayChildren: 0.12,
+    },
+  },
+  collapsed: {
+    y: 0,
+    opacity: 1,
+    width: 48,
+    transition: {
+      type: "spring",
+      damping: 20,
+      stiffness: 300,
+      when: "afterChildren",
+      staggerChildren: 0.05,
+      staggerDirection: -1,
+    },
+  },
+};
+
+const navItemVariants = {
+  expanded: { opacity: 1, x: 0, scale: 1, transition: { type: "spring", damping: 15 } },
+  collapsed: { opacity: 0, x: -20, scale: 0.95, transition: { duration: 0.2 } },
+};
+
+const collapsedIconVariants = {
+  expanded: { opacity: 0, scale: 0.8, transition: { duration: 0.2 } },
+  collapsed: {
+    opacity: 1,
+    scale: 1,
+    transition: { type: "spring", damping: 15, stiffness: 300, delay: 0.15 },
+  },
+};
+
 /* ── Main Component ───────────────────────────────────────── */
 function Navbar() {
   const [openMenu, setOpenMenu] = useState(null); // "courses" | "standards" | null
   const [hoverId, setHoverId] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const navigate = useNavigate();
+  const [isExpanded, setExpanded] = useState(true);
+  const { scrollY } = useScroll();
+  const lastScrollY = useRef(0);
+  const scrollPositionOnCollapse = useRef(0);
+
+  useMotionValueEvent(scrollY, "change", function (latest) {
+    const previous = lastScrollY.current;
+
+    if (isExpanded && latest > previous && latest > 150) {
+      setExpanded(false);
+      scrollPositionOnCollapse.current = latest;
+      setOpenMenu(null);
+    } else if (!isExpanded && latest < previous && scrollPositionOnCollapse.current - latest > 80) {
+      setExpanded(true);
+    }
+
+    lastScrollY.current = latest;
+  });
 
   const closeAll = function () {
     setOpenMenu(null);
     setMobileOpen(false);
   };
 
-  /* Simple nav items (no dropdown) */
-  const simpleItems = [
-    { id: "home", label: "Home", to: "/" },
-    { id: "about", label: "About", to: "/about" },
-    { id: "projects", label: "Projects", to: "/projects", sparkle: true },
-  ];
-
   return (
     <header className="pnav-shell">
       {/* ── Pill nav bar ────────────────────────────────────── */}
       <div className="pnav-outer">
-        <nav className="pnav-pill">
+        <motion.nav
+          className={"pnav-pill" + (isExpanded ? "" : " pnav-pill-collapsed")}
+          initial={{ y: -80, opacity: 0 }}
+          animate={isExpanded ? "expanded" : "collapsed"}
+          variants={navVariants}
+          whileHover={!isExpanded ? { scale: 1.1 } : {}}
+          whileTap={!isExpanded ? { scale: 0.95 } : {}}
+          onClick={function () {
+            if (!isExpanded) {
+              setExpanded(true);
+            }
+          }}
+          aria-label="Main navigation"
+        >
+          <div className="pnav-content" inert={!isExpanded}>
 
           {/* Brand */}
+          <motion.div variants={navItemVariants} className="pnav-brand-wrap">
           <Link to="/" className="pnav-brand" onClick={closeAll}>
             <img src={Logo} alt="Forsyth Central" className="pnav-logo" />
             <div className="pnav-brand-text">
@@ -68,15 +135,16 @@ function Navbar() {
               <span className="pnav-brand-sub">CS Pathway</span>
             </div>
           </Link>
+          </motion.div>
 
           {/* Divider */}
-          <div className="pnav-divider" />
+          <motion.div variants={navItemVariants} className="pnav-divider" />
 
           {/* Desktop link list */}
-          <ul className="pnav-links">
+          <motion.ul className="pnav-links">
 
             {/* Home */}
-            <li
+            <motion.li variants={navItemVariants}
               onMouseEnter={function () { setHoverId("home"); setOpenMenu(null); }}
               onMouseLeave={function () { setHoverId(null); }}
             >
@@ -91,10 +159,10 @@ function Navbar() {
                 )}
                 <span className="pnav-link-label">Home</span>
               </NavLink>
-            </li>
+            </motion.li>
 
             {/* About */}
-            <li
+            <motion.li variants={navItemVariants}
               onMouseEnter={function () { setHoverId("about"); setOpenMenu(null); }}
               onMouseLeave={function () { setHoverId(null); }}
             >
@@ -108,10 +176,10 @@ function Navbar() {
                 )}
                 <span className="pnav-link-label">About</span>
               </NavLink>
-            </li>
+            </motion.li>
 
             {/* Courses dropdown */}
-            <li
+            <motion.li variants={navItemVariants}
               className="pnav-dd-wrap"
               onMouseEnter={function () { setHoverId("courses"); setOpenMenu("courses"); }}
               onMouseLeave={function () { setHoverId(null); setOpenMenu(null); }}
@@ -164,10 +232,10 @@ function Navbar() {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </li>
+            </motion.li>
 
             {/* Standards dropdown */}
-            <li
+            <motion.li variants={navItemVariants}
               className="pnav-dd-wrap"
               onMouseEnter={function () { setHoverId("standards"); setOpenMenu("standards"); }}
               onMouseLeave={function () { setHoverId(null); setOpenMenu(null); }}
@@ -215,45 +283,41 @@ function Navbar() {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </li>
+            </motion.li>
 
-            {/* Projects (sparkle pill) */}
-            <li
-              onMouseEnter={function () { setHoverId("projects"); setOpenMenu(null); }}
-              onMouseLeave={function () { setHoverId(null); }}
-            >
-              <NavLink
-                to="/projects"
-                className={function ({ isActive }) { return "pnav-link pnav-projects-pill" + (isActive ? " pnav-projects-active" : ""); }}
-                onClick={closeAll}
-              >
-                <Sparkles size={13} className="pnav-sparkle" />
-                <span className="pnav-link-label">Projects</span>
-              </NavLink>
-            </li>
-
-          </ul>
+          </motion.ul>
 
           {/* Student Portal CTA */}
-          <button
+          <motion.button
             type="button"
             className="pnav-portal-btn"
+            variants={navItemVariants}
             onClick={function () { closeAll(); navigate("/login"); }}
           >
             Student Portal
-          </button>
+          </motion.button>
 
           {/* Mobile hamburger */}
-          <button
+          <motion.button
             type="button"
             className="pnav-mobile-btn"
+            variants={navItemVariants}
             onClick={function () { setMobileOpen(!mobileOpen); }}
             aria-label="Toggle navigation"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          </motion.button>
 
-        </nav>
+          </div>
+          <motion.div
+            className="pnav-collapsed-icon"
+            variants={collapsedIconVariants}
+            animate={isExpanded ? "expanded" : "collapsed"}
+            aria-hidden="true"
+          >
+            <Menu size={20} />
+          </motion.div>
+        </motion.nav>
       </div>
 
       {/* ── Mobile drawer ───────────────────────────────────── */}
@@ -293,10 +357,6 @@ function Navbar() {
                 })}
               </div>
             </div>
-
-            <Link to="/projects" className="pnav-mob-link" onClick={closeAll}>
-              <Sparkles size={14} /> Projects
-            </Link>
 
             <button
               type="button"
