@@ -31,6 +31,7 @@ function App() {
         <Route path="/courses/apcsa" element={<APCSA />} />
         <Route path="/courses/pgas" element={<PGAS />} />
         <Route path="/courses/cloud-computing" element={<Navigate to="/courses/pgas" replace />} />
+        <Route path="/standards" element={<Navigate to="/standards/1" replace />} />
         <Route path="/standards/1" element={<Standard1 />} />
         <Route path="/standards/2" element={<Standard2 />} />
         <Route path="/standards/3" element={<Standard3 />} />
