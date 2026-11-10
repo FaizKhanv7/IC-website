@@ -4,8 +4,7 @@ import Logo from "/favicon.ico";
 const socials = [
   { label: "Forsyth Central High", href: "https://www.forsyth.k12.ga.us/fchs" },
   { label: "Forsyth County Schools", href: "https://www.forsyth.k12.ga.us/" },
-  { label: "STEM Academy", href: "https://www.forsyth.k12.ga.us/fchs" },
-  { label: "GitHub Education", href: "https://github.com/" }
+  { label: "STEM Academy", href: "https://www.forsyth.k12.ga.us/fchs" }
 ];
 
 function Footer() {
@@ -21,9 +20,15 @@ function Footer() {
             </div>
           </Link>
           <p className="footer-mission">
-            Empowering students with industry-standard computing fundamentals, College Board AP
-            excellence, and creative software, game, and application development.
+            The computer science pathway at Forsyth Central High School: IST, AP CSP,
+            AP CSA, and the PGAS capstone. Dawg Time tutoring available weekly for all enrolled students.
           </p>
+          <a
+            href="mailto:dajohn@forsyth.k12.ga.us?subject=CS%20Pathway%20Enrollment%20Question"
+            className="footer-contact-link"
+          >
+            dajohn@forsyth.k12.ga.us
+          </a>
         </div>
 
         <div className="footer-links-group">
@@ -47,7 +52,7 @@ function Footer() {
 
           <div className="footer-col">
             <h4 className="footer-col-title">Showcase &amp; District</h4>
-            <Link to="/projects">Student Projects Carousel</Link>
+            <Link to="/projects">Student Projects</Link>
             <Link to="/about">About STEM Academy</Link>
             <Link to="/login">Student Portal</Link>
             <a href="https://www.forsyth.k12.ga.us/" target="_blank" rel="noreferrer">
@@ -59,7 +64,7 @@ function Footer() {
 
       <div className="footer-bottom-bar">
         <p className="footer-copyright">
-          &copy; {new Date().getFullYear()} Forsyth Central Highschool Computer Science Pathway.
+          &copy; {new Date().getFullYear()} Forsyth Central High School Computer Science Pathway.
           Part of Forsyth County Schools, Georgia. All rights reserved.
         </p>
         <div className="footer-social-row">

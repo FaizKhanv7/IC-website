@@ -29,7 +29,7 @@ function Login() {
           <div className="login-shield-badge">
             <ShieldCheck size={28} />
           </div>
-          <p className="page-eyebrow">Forsyth Central Highschool &bull; Forsyth County</p>
+          <p className="page-eyebrow">Forsyth Central High School &bull; Forsyth County</p>
           <h1 className="page-title">Student &amp; Faculty Portal</h1>
           <p className="page-lead">
             Sign in with your Forsyth County Schools account to view course materials,

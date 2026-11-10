@@ -6,6 +6,7 @@ import {
 } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 /* ── Placeholder project items ────────────────────────────── */
 const PROJECTS = [
@@ -233,6 +234,13 @@ export default function ProjectsWheel() {
     }
   };
 
+  /* prev / next buttons, shown on touch screens where the wheel cannot be dragged */
+  const step = (direction) => {
+    velocityRef.current = 0;
+    commit(Math.round(rotationRef.current) + direction);
+    runAnim();
+  };
+
   const safeIdx  = Math.round(clamp(selectedIdx, 0, ITEM_COUNT - 1));
   const selected = PROJECTS[safeIdx];
 
@@ -317,7 +325,30 @@ export default function ProjectsWheel() {
         </div>
       </div>
 
-      {/* CTA */}
+      <div className="pw-stepper">
+        <button
+          type="button"
+          className="pw-step-btn"
+          aria-label="Previous project"
+          disabled={safeIdx === 0}
+          onClick={() => step(-1)}
+        >
+          <ChevronLeft size={20} />
+        </button>
+        <span className="pw-step-count">
+          {safeIdx + 1} / {ITEM_COUNT}
+        </span>
+        <button
+          type="button"
+          className="pw-step-btn"
+          aria-label="Next project"
+          disabled={safeIdx === ITEM_COUNT - 1}
+          onClick={() => step(1)}
+        >
+          <ChevronRight size={20} />
+        </button>
+      </div>
+
       <div className="pw-cta-row">
         <Link to="/projects" className="pw-cta-btn">
           View All Projects

@@ -1,8 +1,8 @@
 /*
  * Course catalog for the CS pathway.
  *
- * NOTE: every number below is a PLACEHOLDER. Replace `stats` with the real
- * figures from the department before this goes live.
+ * The `stats` values are "—" until the department supplies real figures.
+ * CoursePage hides any stat that is still "—".
  *
  * IST and PGAS are not AP courses, so they report a course-level
  * stat instead of an AP score.
@@ -14,7 +14,7 @@ export const courses = [
     path: "/courses/ist",
     code: "IST",
     title: "Information Science & Technology",
-    tagline: "The entry point to the pathway — no experience required.",
+    tagline: "The first course in the pathway. No experience required.",
     isAP: false,
     syllabus: null,
     description:
@@ -64,7 +64,7 @@ export const courses = [
     isAP: true,
     syllabus: "/syllabi/FCS%2026-27%20APCSA%20Syllabus.pdf",
     description:
-      "AP CSA is the pathway's most rigorous programming course, equivalent to a first-semester college CS class. Students work in Java to design classes, reason about inheritance and polymorphism, and implement the core data structures and algorithms the AP exam requires. Emphasis is on writing code that is correct, readable, and testable.",
+      "AP CSA is the pathway's Java programming course, built around the College Board's AP Computer Science A curriculum. Students design classes, work with inheritance and polymorphism, and implement the data structures and algorithms the AP exam covers.",
     topics: [
       "Java syntax and object-oriented design",
       "Arrays, ArrayLists, and 2D arrays",
@@ -83,11 +83,11 @@ export const courses = [
     path: "/courses/pgas",
     code: "PGAS",
     title: "Programming, Games, Apps, and Society",
-    tagline: "Build software, games, and apps while exploring technology's impact on society.",
+    tagline: "Build games and apps, and study how technology affects society.",
     isAP: false,
     syllabus: "/syllabi/FCS%2026-27%20PGAS%20Syllabus.pdf",
     description:
-      "PGAS is the pathway's senior capstone, where students explore the intersection of software development, game design, and application creation. Students build projects while examining how technology shapes modern society and the communities around them.",
+      "PGAS is the pathway's senior capstone. Students design and build games and apps, and study how technology affects society.",
     topics: [
       "Game development",
       "Mobile and web application development",

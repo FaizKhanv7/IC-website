@@ -1,7 +1,4 @@
-/*
- * Showcase of student projects from Forsyth Central Highschool CS Pathway.
- * Covering IST, AP CSP, AP CSA, and PGAS.
- */
+/* Student projects shown on the Projects page and in the carousel. */
 
 export const projects = [
   {
@@ -12,7 +9,7 @@ export const projects = [
     gradeLevel: "9th Grade Capstone",
     year: "2025",
     tagline: "Interactive campus navigation and club directory for incoming Forsyth Central freshmen.",
-    description: "Built as an IST capstone project, Central Navigator helps new students and visitors navigate the Forsyth Central Highschool campus. It features an interactive SVG building map, search for teacher classrooms, bell schedule countdown, and an up-to-date extracurricular clubs catalog.",
+    description: "Built as an IST capstone project, Central Navigator helps new students and visitors navigate the Forsyth Central High School campus. It features an interactive SVG building map, search for teacher classrooms, bell schedule countdown, and an up-to-date extracurricular clubs catalog.",
     tags: ["HTML5", "CSS3 Grid", "Vanilla JavaScript", "SVG Mapping", "Local Storage"],
     gradient: "linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)",
     iconName: "Compass",

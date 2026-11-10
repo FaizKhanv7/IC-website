@@ -1,16 +1,38 @@
-# React + Vite
+# Forsyth Central CS Pathway Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Website for the computer science pathway in the STEM Academy at Forsyth Central High School. It covers the four courses (IST, AP CSP, AP CSA, PGAS), course syllabi, the Standards pages, and a student project showcase.
 
-Currently, two official plugins are available:
+Built with React, Vite, React Router, and Framer Motion.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Running locally
 
-## React Compiler
+```bash
+npm install
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Other scripts:
 
-## Expanding the ESLint configuration
+```bash
+npm run build     # production build into dist/
+npm run preview   # serve the production build locally
+npm run lint      # run ESLint
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Where things live
+
+- `src/pages/` has one component per route.
+- `src/components/` has shared pieces such as the navbar, footer, and homepage sections.
+- `src/data/courses.js` holds course descriptions, topics, and syllabus links.
+- `src/data/projects.js` holds the student project entries.
+- `public/syllabi/` holds the syllabus PDFs linked from each course page.
+
+## Content to fill in
+
+- Set `VITE_SITE_URL` (see `.env.example`) to the live address so links shared on Discord, Remind, or email show the preview image.
+- `src/components/ContactCard.jsx` has no classroom number or office hours because the syllabi do not list any. Add them when confirmed.
+- `src/data/faq.js` answers come from the syllabi. The graduation/math-credit and "AP CSP without IST" answers point students to a counselor until the department confirms.
+- Course stats in `src/data/courses.js` are `"—"` until real numbers are added. The course pages hide any stat that is still `"—"`.
+- The Standards 2 to 6 pages are placeholders.
+- The pathway flowchart in `src/components/PathwayFlow.jsx` reads its steps from `src/data/courses.js`.
+- The hero images in `src/assets/placeholder*.png` and the project wheel images on the homepage are stand-ins.

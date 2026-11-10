@@ -23,7 +23,7 @@ const imageVariants = {
 const stats = [
   { value: "4", label: "Sequential courses", icon: BookOpen },
   { value: "2", label: "College Board AP courses", icon: GraduationCap },
-  { value: "100%", label: "Hands-on, project-based", icon: Lightbulb },
+  { value: "9–12", label: "Grade levels", icon: Lightbulb },
   { value: "PGAS", label: "Senior capstone", icon: Sparkles },
 ];
 
@@ -41,10 +41,9 @@ function HeroSection() {
             Shape the Future <span>Through Code</span>
           </motion.h1>
           <motion.p className="hero-subtitle" variants={itemVariants}>
-            The FCHS Computer Science &amp; STEM Academy takes students from their first
-            line of code through College Board AP coursework and into a senior capstone
-            building programming, games, and apps. No prior experience required—just
-            curiosity and drive.
+            A four-course pathway in the FCHS STEM Academy. Students start with IST, take
+            AP CSP and AP CSA, and finish with a senior capstone in games and apps.
+            IST has no prerequisites.
           </motion.p>
           <motion.div className="hero-actions" variants={itemVariants}>
             <Link to="/courses" className="btn btn-primary btn-lg">

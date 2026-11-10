@@ -116,7 +116,7 @@ export default function ProjectCarousel() {
       onKeyDown={handleKeyDown}
       tabIndex={0}
       aria-roledescription="carousel"
-      aria-label="Forsyth Central Highschool Student Projects Carousel"
+      aria-label="Forsyth Central High School Student Projects Carousel"
     >
       {/* Category filter tabs */}
       <div className="carousel-filter-bar">

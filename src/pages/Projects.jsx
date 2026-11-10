@@ -26,44 +26,31 @@ export default function Projects() {
     <main className="page page-wide">
       {/* Page Header */}
       <div className="page-header-center">
-        <p className="page-eyebrow">Forsyth Central Highschool &bull; Forsyth County</p>
+        <p className="page-eyebrow">Forsyth Central High School &bull; Forsyth County</p>
         <h1 className="page-title">Student Project Showcase</h1>
         <p className="page-lead">
-          From first HTML/CSS interactive layouts to algorithmic Java engines and
-          production-grade cloud deployments. Browse student-engineered work from across
-          Forsyth Central Highschool's Computer Science pathway.
+          Work from students in the Forsyth Central High School computer science pathway,
+          from web pages in IST to Java programs in AP CSA and capstone projects in PGAS.
         </p>
       </div>
 
-      {/* Pathway Highlights Ribbon */}
       <div className="project-stats-ribbon">
         <div className="stat-pill">
-          <span className="stat-number">8+</span>
-          <span className="stat-desc">Featured Capstones</span>
+          <span className="stat-number">{projects.length}</span>
+          <span className="stat-desc">Featured Projects</span>
         </div>
         <div className="stat-pill">
           <span className="stat-number">4</span>
-          <span className="stat-desc">Course Pathways</span>
-        </div>
-        <div className="stat-pill">
-          <span className="stat-number">100%</span>
-          <span className="stat-desc">Student Authored</span>
-        </div>
-        <div className="stat-pill">
-          <span className="stat-number">Industry</span>
-          <span className="stat-desc">Standard Tech Stacks</span>
+          <span className="stat-desc">Courses</span>
         </div>
       </div>
 
-      {/* Interactive Project Carousel */}
       <section className="page-section carousel-section">
         <div className="section-header-row">
           <div>
-            <span className="section-tag">Interactive Carousel</span>
-            <h2 className="section-heading">Featured Project Carousel</h2>
+            <h2 className="section-heading">Featured Projects</h2>
             <p className="section-subtext">
-              Use the arrows, indicators, or course filters to explore highlighted capstone
-              projects from Forsyth Central students.
+              Use the arrows or the course filters to browse.
             </p>
           </div>
         </div>
@@ -71,15 +58,12 @@ export default function Projects() {
         <ProjectCarousel />
       </section>
 
-      {/* Pathway Progression Matrix */}
       <section className="page-section pathway-milestones-section">
         <div className="section-header-row">
           <div>
-            <span className="section-tag">Curriculum Matrix</span>
-            <h2 className="section-heading">How Projects Evolve by Course</h2>
+            <h2 className="section-heading">Projects by Course</h2>
             <p className="section-subtext">
-              Every course in the Forsyth Central sequence culminates in substantial,
-              independent student work.
+              What students build in each course.
             </p>
           </div>
         </div>
@@ -92,8 +76,8 @@ export default function Projects() {
               <h4>Web & Digital Media</h4>
             </div>
             <p className="step-desc">
-              Foundational web applications, personal portfolios, responsive layouts, and
-              interactive scripts utilizing HTML, CSS, and introductory JavaScript.
+              Web pages and small interactive projects in HTML, CSS, and introductory
+              JavaScript.
             </p>
             <Link to="/courses/ist" className="step-link">
               Explore IST Course <ArrowRight size={14} />
@@ -107,8 +91,7 @@ export default function Projects() {
               <h4>Create Task & Data Apps</h4>
             </div>
             <p className="step-desc">
-              College Board Create Task projects, societal impact studies, data visualizations,
-              and interactive simulations solving real community challenges.
+              Create Performance Task programs, including data-driven apps and simulations.
             </p>
             <Link to="/courses/apcsp" className="step-link">
               Explore AP CSP Course <ArrowRight size={14} />
@@ -122,8 +105,8 @@ export default function Projects() {
               <h4>Object-Oriented Java</h4>
             </div>
             <p className="step-desc">
-              Rigorous object-oriented software, 2D game engines, algorithmic solvers, and
-              data structure implementations built natively in Java.
+              Java programs built around classes and data structures, such as games and
+              algorithm solvers.
             </p>
             <Link to="/courses/apcsa" className="step-link">
               Explore AP CSA Course <ArrowRight size={14} />
@@ -137,8 +120,7 @@ export default function Projects() {
               <h4>Programming, Games, Apps &amp; Society</h4>
             </div>
             <p className="step-desc">
-              Senior projects bring together game and application development with
-              thoughtful exploration of technology's impact on society.
+              Senior capstone projects in game and app development.
             </p>
             <Link to="/courses/pgas" className="step-link">
               Explore PGAS <ArrowRight size={14} />
@@ -147,14 +129,12 @@ export default function Projects() {
         </div>
       </section>
 
-      {/* Comprehensive Project Gallery Grid with Search */}
       <section className="page-section gallery-grid-section">
         <div className="section-header-row">
           <div>
-            <span className="section-tag">Project Catalog</span>
-            <h2 className="section-heading">Browse All Pathway Projects</h2>
+            <h2 className="section-heading">All Projects</h2>
             <p className="section-subtext">
-              Search by technology, student project title, or filter by course.
+              Search by title or technology, or filter by course.
             </p>
           </div>
 
@@ -164,7 +144,7 @@ export default function Projects() {
             <input
               type="text"
               className="gallery-search-input"
-              placeholder="Search projects, technologies (e.g. Java, AWS, Python)..."
+              placeholder="Search projects or technologies (e.g. Java, Python)"
               value={searchTerm}
               onChange={function (e) { setSearchTerm(e.target.value); }}
             />
@@ -234,21 +214,18 @@ export default function Projects() {
         </div>
       </section>
 
-      {/* Call to action */}
       <section className="showcase-callout-banner">
         <div className="showcase-callout-content">
-          <h3>Are you a Forsyth Central student interested in building projects like these?</h3>
+          <h3>Want to build projects like these?</h3>
           <p>
-            The Computer Science pathway at Forsyth Central Highschool welcomes all incoming
-            students with zero prerequisites. Enroll for the upcoming semester and start your
-            portfolio.
+            IST has no prerequisites. Look through the course sequence to plan your schedule.
           </p>
           <div className="callout-actions">
             <Link to="/courses" className="btn btn-primary">
-              View Course Sequence
+              View Courses
             </Link>
             <Link to="/about" className="btn btn-secondary">
-              Contact CS Department
+              About the Pathway
             </Link>
           </div>
         </div>

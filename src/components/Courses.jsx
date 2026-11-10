@@ -1,7 +1,7 @@
-import apcsaImage from "../assets/APCSA.png";
-import apcspImage from "../assets/APCSP.png";
-import istImage from "../assets/IST.png";
-import pgasImage from "../assets/PGAS.png";
+import apcsaImage from "../assets/APCSA.webp";
+import apcspImage from "../assets/APCSP.webp";
+import istImage from "../assets/IST.webp";
+import pgasImage from "../assets/PGAS.webp";
 import { ArrowRight, Code2, Cpu, Gamepad2, Terminal } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,7 @@ const courseList = [
     code: "IST",
     badge: "Year 1 · Introductory",
     title: "Information Science & Technology",
-    desc: "The entry point — no coding experience required. Master digital literacy, hardware, and web fundamentals.",
+    desc: "No coding experience required. Digital literacy, hardware, and web basics.",
     image: istImage,
     href: "/courses/ist",
     icon: Terminal,
@@ -20,7 +20,7 @@ const courseList = [
     code: "AP CSP",
     badge: "Year 2 · AP College Board",
     title: "AP Computer Science Principles",
-    desc: "Explore algorithms, big data, internet architecture, and build the College Board Create Task project.",
+    desc: "Algorithms, data, how the internet works, and the Create Performance Task.",
     image: apcspImage,
     href: "/courses/apcsp",
     icon: Code2,
@@ -30,7 +30,7 @@ const courseList = [
     code: "AP CSA",
     badge: "Year 3 · AP College Board",
     title: "AP Computer Science A",
-    desc: "Rigorous Java engineering, object-oriented design, recursion, and core data structures.",
+    desc: "Java, object-oriented design, recursion, and core data structures.",
     image: apcsaImage,
     href: "/courses/apcsa",
     icon: Cpu,
@@ -40,7 +40,7 @@ const courseList = [
     code: "PGAS",
     badge: "Year 4 · Senior Capstone",
     title: "Programming, Games, Apps & Society",
-    desc: "Build software, games, and apps while exploring technology's real-world impact on society.",
+    desc: "Build games and apps, and study how technology affects society.",
     image: pgasImage,
     href: "/courses/pgas",
     icon: Gamepad2,
@@ -53,7 +53,7 @@ function CourseCard({ course }) {
   return (
     <Link to={course.href} className="cc-card" style={{ "--accent": course.accent }}>
       {/* Full-bleed background image */}
-      <img src={course.image} alt={course.title} className="cc-bg-img" />
+      <img src={course.image} alt={course.title} className="cc-bg-img" width="800" height="1200" loading="lazy" decoding="async" />
 
       {/* Dark gradient overlay */}
       <div className="cc-overlay" />
@@ -90,11 +90,10 @@ export default function Courses() {
   return (
     <section className="cc-section" id="courses">
       <div className="cc-header">
-        <p className="page-eyebrow">Sequential Curriculum</p>
-        <h2 className="cc-heading">The Four-Course Pathway</h2>
+        <p className="page-eyebrow">The Pathway</p>
+        <h2 className="cc-heading">Four Courses, One Sequence</h2>
         <p className="cc-subheading">
-          From first line of code to senior capstone — four courses built to take
-          Forsyth Central students into any technical field.
+          Taken in order, from a first line of code to a senior capstone.
         </p>
       </div>
       <div className="cc-grid">

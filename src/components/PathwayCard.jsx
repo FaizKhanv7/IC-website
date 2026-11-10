@@ -2,170 +2,283 @@ import { useId } from "react";
 import { motion } from "framer-motion";
 import {
   GraduationCap,
-  Code2,
-  BookOpen,
-  Award,
-  Cpu,
-  GitBranch,
+  Globe,
   Terminal,
   Gamepad2,
+  Code2,
+  Layers,
+  GitBranch,
+  Award,
 } from "lucide-react";
 
-/* ─── Peripheral icons around the center ──────────────────── */
-/* SVG canvas is 564 × 410, center at (282, 205) */
-const NODES = [
+/*
+ * 6 Core Pathway Skills — 3 on Left, 3 on Right layout
+ * Canvas size: viewBox 0 0 880 520
+ * Center Hub: (440, 260), width 164, height 82 (X: 358–522, Y: 219–301)
+ *
+ * Left Column: X: 60 to 276 (width 216, height 54)
+ *   - Top-Left: Web Foundations (Y: 61, center Y: 88)
+ *   - Middle-Left: Python & Logic (Y: 233, center Y: 260)
+ *   - Bottom-Left: Game & App Dev (Y: 405, center Y: 432)
+ *
+ * Right Column: X: 604 to 820 (width 216, height 54)
+ *   - Top-Right: Java & OOP (Y: 61, center Y: 88)
+ *   - Middle-Right: Data Structures (Y: 233, center Y: 260)
+ *   - Bottom-Right: Software Eng. (Y: 405, center Y: 432)
+ */
+const SKILLS = [
+  // ── LEFT SIDE ──
   {
-    id: "portfolio",
-    icon: GitBranch,
-    x: 108,
-    y: 88,
-    path: "M 270 205 V 103 Q 270 88 255 88 H 108",
-    delay: 0.1,
+    id: "web",
+    title: "Web Foundations",
+    sub: "HTML5 · CSS3 · Modern JS",
+    icon: Globe,
+    cardX: 60,
+    cardY: 61,
+    // Leaves top of hub at (398, 219), goes up to Y: 88, rounds into card right edge at (276, 88)
+    path: "M 398 219 V 108 Q 398 88 378 88 H 276",
   },
   {
-    id: "apcsp",
-    icon: BookOpen,
-    x: 362,
-    y: 68,
-    path: "M 294 205 V 83 Q 294 68 309 68 H 362",
-    delay: 0.2,
-  },
-  {
-    id: "ist",
+    id: "python",
+    title: "Python & Logic",
+    sub: "Algorithms & Problem Solving",
     icon: Terminal,
-    x: 64,
-    y: 205,
-    path: "M 250 205 H 64",
-    delay: 0.3,
+    cardX: 60,
+    cardY: 233,
+    // Horizontal straight line from left of hub (358, 260) to right edge of card (276, 260)
+    path: "M 358 260 H 276",
   },
   {
-    id: "apcsa",
-    icon: Cpu,
-    x: 500,
-    y: 205,
-    path: "M 314 205 H 500",
-    delay: 0.4,
-  },
-  {
-    id: "award",
-    icon: Award,
-    x: 108,
-    y: 322,
-    path: "M 270 205 V 307 Q 270 322 255 322 H 108",
-    delay: 0.5,
-  },
-  {
-    id: "pgas",
+    id: "game",
+    title: "Game & App Dev",
+    sub: "Pygame & Senior Capstones",
     icon: Gamepad2,
-    x: 362,
-    y: 342,
-    path: "M 294 205 V 327 Q 294 342 309 342 H 362",
-    delay: 0.6,
+    cardX: 60,
+    cardY: 405,
+    // Leaves bottom of hub at (398, 301), goes down to Y: 432, rounds into card right edge at (276, 432)
+    path: "M 398 301 V 412 Q 398 432 378 432 H 276",
+  },
+
+  // ── RIGHT SIDE ──
+  {
+    id: "java",
+    title: "Java & OOP",
+    sub: "Classes, Objects & Design",
+    icon: Code2,
+    cardX: 604,
+    cardY: 61,
+    // Leaves top of hub at (482, 219), goes up to Y: 88, rounds into card left edge at (604, 88)
+    path: "M 482 219 V 108 Q 482 88 502 88 H 604",
   },
   {
-    id: "code",
-    icon: Code2,
-    x: 500,
-    y: 322,
-    path: "M 314 215 V 307 Q 314 322 329 322 H 500",
-    delay: 0.7,
+    id: "data-structs",
+    title: "Data Structures",
+    sub: "Arrays, Lists & Recursion",
+    icon: Layers,
+    cardX: 604,
+    cardY: 233,
+    // Horizontal straight line from right of hub (522, 260) to left edge of card (604, 260)
+    path: "M 522 260 H 604",
+  },
+  {
+    id: "software-eng",
+    title: "Software Eng.",
+    sub: "Git, Systems & Real Code",
+    icon: GitBranch,
+    cardX: 604,
+    cardY: 405,
+    // Leaves bottom of hub at (482, 301), goes down to Y: 432, rounds into card left edge at (604, 432)
+    path: "M 482 301 V 412 Q 482 432 502 432 H 604",
   },
 ];
 
-/* ─── Animated SVG path with travelling dash ──────────────── */
-function AnimatedLine({ d, gradId }) {
+/* Animated traveling pulse along connecting trace */
+function AnimatedTrace({ d }) {
   return (
     <>
-      {/* static base line */}
-      <path d={d} stroke="#e2e8f0" strokeWidth="1" fill="none" />
-      {/* travelling gradient dash */}
+      <path
+        d={d}
+        stroke="#e2e8f0"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        fill="none"
+      />
       <motion.path
         d={d}
-        stroke={`url(#${gradId})`}
-        strokeWidth="2"
+        pathLength="100"
+        stroke="#c5162f"
+        strokeWidth="2.5"
+        strokeLinecap="round"
         fill="none"
-        strokeDasharray="40 160"
-        initial={{ strokeDashoffset: 200 }}
-        animate={{ strokeDashoffset: -200 }}
-        transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
+        strokeDasharray="22 78"
+        initial={{ strokeDashoffset: 100 }}
+        animate={{ strokeDashoffset: 0 }}
+        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
       />
-      <defs>
-        <linearGradient id={gradId} gradientUnits="userSpaceOnUse">
-          <stop offset="0%"   stopColor="transparent" />
-          <stop offset="50%"  stopColor="#c5162f" stopOpacity="0.7" />
-          <stop offset="100%" stopColor="transparent" />
-        </linearGradient>
-      </defs>
     </>
   );
 }
 
-/* ─── Main component ───────────────────────────────────────── */
 export default function PathwayCard() {
   const uid = useId().replace(/:/g, "");
 
   return (
-    <section className="pc-section">
+    <section className="pc-section" id="pathway-skills">
       <div className="pc-card">
-
-        {/* ── Visual area ── */}
+        {/* Visual Circuit Canvas — 3 on Left, 3 on Right Balanced Circuit */}
         <div className="pc-visual">
-          {/* dot-grid background */}
           <div className="pc-dots" aria-hidden="true" />
-          {/* top + bottom fade masks */}
-          <div className="pc-fade" aria-hidden="true" />
 
-          {/* SVG lines */}
           <svg
             className="pc-svg"
-            viewBox="0 0 564 410"
+            viewBox="0 0 880 520"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
           >
-            {NODES.map((n) => (
-              <AnimatedLine key={n.id} d={n.path} gradId={`${uid}-${n.id}`} />
+            <defs>
+              <filter id={`shadow-${uid}`} x="-15%" y="-15%" width="130%" height="130%">
+                <feDropShadow dx="0" dy="3" stdDeviation="5" floodColor="#0f172a" floodOpacity="0.07" />
+              </filter>
+            </defs>
+
+            {/* Connecting Traces that meet nodes seamlessly with zero gap */}
+            {SKILLS.map((s) => (
+              <AnimatedTrace key={s.id} d={s.path} />
             ))}
+
+            {/* 6 Skill Node Cards: 3 on Left, 3 on Right */}
+            {SKILLS.map((s) => {
+              const Icon = s.icon;
+              return (
+                <g key={s.id} className="pc-svg-node">
+                  {/* Card Background */}
+                  <rect
+                    x={s.cardX}
+                    y={s.cardY}
+                    width="216"
+                    height="54"
+                    rx="14"
+                    fill="#ffffff"
+                    stroke="#e2e8f0"
+                    strokeWidth="1.2"
+                    filter={`url(#shadow-${uid})`}
+                  />
+
+                  {/* Icon Box */}
+                  <rect
+                    x={s.cardX + 11}
+                    y={s.cardY + 10}
+                    width="34"
+                    height="34"
+                    rx="10"
+                    fill="#fef2f4"
+                    stroke="#fecdd3"
+                    strokeWidth="1"
+                  />
+
+                  {/* Icon */}
+                  <foreignObject x={s.cardX + 11} y={s.cardY + 10} width="34" height="34">
+                    <div
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "#c5162f",
+                      }}
+                    >
+                      <Icon size={17} />
+                    </div>
+                  </foreignObject>
+
+                  {/* Title */}
+                  <text
+                    x={s.cardX + 54}
+                    y={s.cardY + 24}
+                    fontSize="12.5"
+                    fontWeight="750"
+                    fill="#0f172a"
+                    fontFamily="inherit"
+                  >
+                    {s.title}
+                  </text>
+
+                  {/* Subtitle */}
+                  <text
+                    x={s.cardX + 54}
+                    y={s.cardY + 41}
+                    fontSize="9.8"
+                    fontWeight="500"
+                    fill="#64748b"
+                    fontFamily="inherit"
+                  >
+                    {s.sub}
+                  </text>
+                </g>
+              );
+            })}
+
+            {/* Center Hub: FCHS CS PATHWAYS */}
+            <g className="pc-center-hub-svg">
+              <rect
+                x="358"
+                y="219"
+                width="164"
+                height="82"
+                rx="22"
+                fill="#ffffff"
+                stroke="#fecdd3"
+                strokeWidth="1.8"
+                filter={`url(#shadow-${uid})`}
+              />
+
+              <foreignObject x="358" y="219" width="164" height="82">
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "3px",
+                  }}
+                >
+                  <GraduationCap size={26} color="#c5162f" />
+                  <span
+                    style={{
+                      fontSize: "14px",
+                      fontWeight: 800,
+                      color: "#0f172a",
+                      letterSpacing: "0.2px",
+                      lineHeight: 1.1,
+                    }}
+                  >
+                    FCHS
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "10px",
+                      fontWeight: 800,
+                      color: "#c5162f",
+                      letterSpacing: "0.8px",
+                      textTransform: "uppercase",
+                      lineHeight: 1,
+                    }}
+                  >
+                    CS PATHWAYS
+                  </span>
+                </div>
+              </foreignObject>
+            </g>
           </svg>
-
-          {/* Center graduation cap */}
-          <div className="pc-center-wrap">
-            <div className="pc-center-inner">
-              <GraduationCap size={32} strokeWidth={1.5} />
-            </div>
-            {/* pulsing ring */}
-            <motion.div
-              className="pc-pulse-ring"
-              animate={{ scale: [1, 1.18, 1], opacity: [0.35, 0, 0.35] }}
-              transition={{ duration: 3, repeat: Infinity }}
-            />
-          </div>
-
-          {/* Peripheral icon nodes */}
-          {NODES.map((n) => {
-            const Icon = n.icon;
-            return (
-              <motion.div
-                key={n.id}
-                className="pc-node"
-                style={{
-                  left: `${(n.x / 564) * 100}%`,
-                  top:  `${(n.y / 410) * 100}%`,
-                }}
-                initial={{ opacity: 0, scale: 0.7 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: n.delay, duration: 0.35 }}
-              >
-                <Icon size={18} strokeWidth={1.5} />
-              </motion.div>
-            );
-          })}
         </div>
 
-        {/* ── Text + features ── */}
+        {/* Text & Features Below Circuit */}
         <div className="pc-body">
-          <h2 className="pc-title">Built Into Your Graduation</h2>
+          <h2 className="pc-title">What You Leave With</h2>
 
           <div className="pc-features">
             <div className="pc-feature">
@@ -173,10 +286,10 @@ export default function PathwayCard() {
                 <GitBranch size={18} strokeWidth={1.5} />
               </div>
               <div>
-                <strong>Practical Portfolio</strong>
+                <strong>A Project Portfolio</strong>
                 <p>
-                  Graduate with a GitHub portfolio of real, deployed
-                  applications — not just test scores.
+                  Students graduate with programs and projects of their own,
+                  not just exam scores.
                 </p>
               </div>
             </div>
@@ -186,10 +299,10 @@ export default function PathwayCard() {
                 <Award size={18} strokeWidth={1.5} />
               </div>
               <div>
-                <strong>AP College Credit</strong>
+                <strong>AP Exams</strong>
                 <p>
-                  AP CSP and AP CSA can earn up to 8 transferable college
-                  credit hours — while still in high school.
+                  Students can sit the AP CSP and AP CSA exams. Whether a score
+                  earns college credit depends on the college.
                 </p>
               </div>
             </div>

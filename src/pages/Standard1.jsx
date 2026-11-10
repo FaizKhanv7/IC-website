@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PdfViewer from "../components/PdfViewer";
 import {
   ChevronLeft,
   ChevronRight,
@@ -8,18 +9,51 @@ import {
   ClipboardList,
 } from "lucide-react";
 
+const SYLLABI = [
+  {
+    id: "apcsp",
+    label: "AP CSP",
+    title: "AP Computer Science Principles",
+    file: "/syllabi/FCS%2026-27%20APCSP%20Syllabus.pdf",
+  },
+  {
+    id: "apcsa",
+    label: "AP CSA",
+    title: "AP Computer Science A",
+    file: "/syllabi/FCS%2026-27%20APCSA%20Syllabus.pdf",
+  },
+  {
+    id: "pgas",
+    label: "PGAS",
+    title: "Programming, Games, Apps, and Society",
+    file: "/syllabi/FCS%2026-27%20PGAS%20Syllabus.pdf",
+  },
+];
+
+const PACING_GUIDES = [
+  {
+    id: "apcsp",
+    label: "AP CSP",
+    title: "AP Computer Science Principles",
+    file: "/pacing/APCSP%202026-27%20Pacing%20Guide.pdf",
+  },
+];
+
 const SECTIONS = [
   {
     icon: FileText,
     title: "Course Syllabi",
     description:
       "Course overviews, expectations, grading policies, and required materials for each Computer Science Pathway course.",
+    documents: SYLLABI,
   },
   {
     icon: CalendarRange,
     title: "Course Pacing Guide",
     description:
       "Week-by-week pacing for each course, showing how units, assessments, and projects are sequenced across the year.",
+    documents: PACING_GUIDES,
+    note: "Pacing guides for the other courses are coming soon.",
   },
   {
     icon: Users,
@@ -71,9 +105,18 @@ function Standard1() {
                 </span>
                 <h2 className="standard-section-heading">{section.title}</h2>
                 <p className="standard-section-text">{section.description}</p>
-                <p className="standard-section-placeholder">
-                  Materials for this section are coming soon.
-                </p>
+                {section.documents ? (
+                  <>
+                    <PdfViewer documents={section.documents} />
+                    {section.note && (
+                      <p className="standard-section-placeholder">{section.note}</p>
+                    )}
+                  </>
+                ) : (
+                  <p className="standard-section-placeholder">
+                    Materials for this section are coming soon.
+                  </p>
+                )}
               </div>
             </section>
           );
