@@ -17,10 +17,10 @@ import {
 /* ── Nav data ─────────────────────────────────────────────── */
 const COURSES_ITEMS = [
   { code: "All", label: "All Courses Overview", to: "/courses", icon: LayoutGrid, desc: "Browse the full four-course pathway" },
-  { code: "IST", label: "Information Science & Technology", to: "/courses/ist", icon: Terminal, desc: "The entry point — no experience required" },
+  { code: "IST", label: "Information Science & Technology", to: "/courses/ist", icon: Terminal, desc: "No experience required" },
   { code: "AP CSP", label: "AP Computer Science Principles", to: "/courses/apcsp", icon: Code2, desc: "Algorithms, data, and the Create Task" },
   { code: "AP CSA", label: "AP Computer Science A", to: "/courses/apcsa", icon: Cpu, desc: "Java, OOP, and data structures" },
-  { code: "PGAS", label: "Programming, Games, Apps & Society", to: "/courses/pgas", icon: Gamepad2, desc: "Senior capstone — build real software" },
+  { code: "PGAS", label: "Programming, Games, Apps & Society", to: "/courses/pgas", icon: Gamepad2, desc: "Senior capstone: games and apps" },
 ];
 
 const STANDARDS_ITEMS = Array.from({ length: 6 }, function (_, i) {
@@ -120,6 +120,9 @@ function Navbar() {
           onClick={function () {
             if (!isExpanded) {
               setExpanded(true);
+              if (typeof window !== "undefined" && window.innerWidth <= 900) {
+                setMobileOpen(true);
+              }
             }
           }}
           aria-label="Main navigation"
@@ -145,8 +148,8 @@ function Navbar() {
 
             {/* Home */}
             <motion.li variants={navItemVariants}
-              onMouseEnter={function () { setHoverId("home"); setOpenMenu(null); }}
-              onMouseLeave={function () { setHoverId(null); }}
+              onPointerEnter={function (e) { if (e.pointerType === "mouse") { setHoverId("home"); setOpenMenu(null); } }}
+              onPointerLeave={function (e) { if (e.pointerType === "mouse") setHoverId(null); }}
             >
               <NavLink
                 to="/"
@@ -163,8 +166,8 @@ function Navbar() {
 
             {/* About */}
             <motion.li variants={navItemVariants}
-              onMouseEnter={function () { setHoverId("about"); setOpenMenu(null); }}
-              onMouseLeave={function () { setHoverId(null); }}
+              onPointerEnter={function (e) { if (e.pointerType === "mouse") { setHoverId("about"); setOpenMenu(null); } }}
+              onPointerLeave={function (e) { if (e.pointerType === "mouse") setHoverId(null); }}
             >
               <NavLink
                 to="/about"
@@ -181,11 +184,12 @@ function Navbar() {
             {/* Courses dropdown */}
             <motion.li variants={navItemVariants}
               className="pnav-dd-wrap"
-              onMouseEnter={function () { setHoverId("courses"); setOpenMenu("courses"); }}
-              onMouseLeave={function () { setHoverId(null); setOpenMenu(null); }}
+              onPointerEnter={function (e) { if (e.pointerType === "mouse") { setHoverId("courses"); setOpenMenu("courses"); } }}
+              onPointerLeave={function (e) { if (e.pointerType === "mouse") { setHoverId(null); setOpenMenu(null); } }}
             >
               <button
                 type="button"
+                aria-expanded={openMenu === "courses"}
                 className={"pnav-link pnav-dd-btn" + (openMenu === "courses" ? " pnav-link-active" : "")}
                 onClick={function () { setOpenMenu(openMenu === "courses" ? null : "courses"); }}
               >
@@ -237,11 +241,12 @@ function Navbar() {
             {/* Standards dropdown */}
             <motion.li variants={navItemVariants}
               className="pnav-dd-wrap"
-              onMouseEnter={function () { setHoverId("standards"); setOpenMenu("standards"); }}
-              onMouseLeave={function () { setHoverId(null); setOpenMenu(null); }}
+              onPointerEnter={function (e) { if (e.pointerType === "mouse") { setHoverId("standards"); setOpenMenu("standards"); } }}
+              onPointerLeave={function (e) { if (e.pointerType === "mouse") { setHoverId(null); setOpenMenu(null); } }}
             >
               <button
                 type="button"
+                aria-expanded={openMenu === "standards"}
                 className={"pnav-link pnav-dd-btn" + (openMenu === "standards" ? " pnav-link-active" : "")}
                 onClick={function () { setOpenMenu(openMenu === "standards" ? null : "standards"); }}
               >

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { getCourse } from "../data/courses";
+import PdfViewer from "./PdfViewer";
 import { ArrowLeft, Sparkles, ArrowRight } from "lucide-react";
 
 function CoursePage({ slug }) {
@@ -17,6 +18,13 @@ function CoursePage({ slug }) {
   }
 
   const { primaryLabel, primaryValue, projects: projectCount, enrolled } = course.stats;
+
+  // Stats are hidden until real figures replace the "—" placeholders in data/courses.js.
+  const stats = [
+    { value: primaryValue, label: primaryLabel },
+    { value: projectCount, label: "Projects Built Annually" },
+    { value: enrolled, label: "Students Enrolled" },
+  ].filter(function (s) { return s.value && s.value !== "—"; });
 
   return (
     <main className="page page-medium">
@@ -36,36 +44,31 @@ function CoursePage({ slug }) {
         <p className="page-lead">{course.tagline}</p>
       </div>
 
-      {/* Headline numbers */}
-      <div className="stat-row">
-        <div className="stat-card">
-          <span className="stat-value">{primaryValue}</span>
-          <span className="stat-label">{primaryLabel}</span>
+      {stats.length > 0 && (
+        <div className="stat-row">
+          {stats.map(function (s) {
+            return (
+              <div className="stat-card" key={s.label}>
+                <span className="stat-value">{s.value}</span>
+                <span className="stat-label">{s.label}</span>
+              </div>
+            );
+          })}
         </div>
-        <div className="stat-card">
-          <span className="stat-value">{projectCount}</span>
-          <span className="stat-label">Projects Built Annually</span>
-        </div>
-        <div className="stat-card">
-          <span className="stat-value">{enrolled}</span>
-          <span className="stat-label">Bulldog Students Enrolled</span>
-        </div>
-      </div>
+      )}
 
-      {/* Description & Overview */}
       <section className="page-section course-section-card">
-        <h2 className="page-heading">About This Course at Forsyth Central</h2>
+        <h2 className="page-heading">About This Course</h2>
         <p className="page-text">{course.description}</p>
       </section>
 
-      {/* Syllabus Topics */}
       <section className="page-section course-section-card">
-        <h2 className="page-heading">Key Units &amp; Competencies Covered</h2>
+        <h2 className="page-heading">Topics</h2>
         <div className="topics-grid">
           {course.topics.map(function (topic, index) {
             return (
               <div key={topic} className="topic-card">
-                <span className="topic-num">Unit 0{index + 1}</span>
+                <span className="topic-num">0{index + 1}</span>
                 <span className="topic-title">{topic}</span>
               </div>
             );
@@ -84,16 +87,20 @@ function CoursePage({ slug }) {
                 open the PDF in a new tab
               </a>.
             </p>
-            <iframe
-              className="course-syllabus-embed"
-              src={course.syllabus}
-              title={course.code + " 2026–27 course syllabus"}
-              loading="lazy"
+            <PdfViewer
+              documents={[
+                {
+                  id: course.slug,
+                  label: course.code,
+                  title: course.code + " 2026–27 course syllabus",
+                  file: course.syllabus,
+                },
+              ]}
             />
           </>
         ) : (
           <p className="page-text">
-            The IST syllabus has not been provided yet.
+            The {course.code} syllabus is not available yet.
           </p>
         )}
       </section>
@@ -104,13 +111,12 @@ function CoursePage({ slug }) {
           <Sparkles size={32} />
         </div>
         <div className="cta-copy-side">
-          <h3>See What Forsyth Central Students Build in {course.code}</h3>
+          <h3>Student Projects</h3>
           <p>
-            Browse student-built games, apps, and other software projects from this
-            course in our interactive project carousel.
+            See what students have built across the pathway.
           </p>
           <Link to="/projects" className="btn btn-primary btn-sm">
-            View Projects Carousel <ArrowRight size={14} />
+            View Projects <ArrowRight size={14} />
           </Link>
         </div>
       </section>
